@@ -30,6 +30,8 @@
   border-color: #8492a6;
   height: 6vh;
   font-size: 1.4vw;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-weight: bold;
 }
 .form-control::placeholder {
   color: #2b7a78;
@@ -57,7 +59,7 @@
 }
 .title {
   color: #17252a;
-  font-family: Ubuntu;
+  font-family: 'Ubuntu Condensed', sans-serif;
   font-size: 4vh;
   line-height: 36px;
   width: 618px;

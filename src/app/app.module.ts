@@ -8,6 +8,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { DownloadsModule } from './components/ModuloDescargas/downloads.module';
+import { PaymentModule } from './components/ModuloPagos/payment/payment.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +21,8 @@ import { DownloadsModule } from './components/ModuloDescargas/downloads.module';
     AppRoutingModule,
     BrowserAnimationsModule,
     FlexLayoutModule,
-    DownloadsModule
+    DownloadsModule,
+    PaymentModule
   ],
   providers: [],
   bootstrap: [AppComponent]
