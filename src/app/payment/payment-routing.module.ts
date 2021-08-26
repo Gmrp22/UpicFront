@@ -1,18 +1,20 @@
+
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { NewPaymentComponent } from './new-payment/new-payment.component';
 
 const routes: Routes = [
   {
     path: '',
     children: [ {
-      path: 'payment',
-      loadChildren: () => import('./payment/payment.module').then(mod => mod.PaymentModule),
+      path: '',
+      component: NewPaymentComponent
     }]
   }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class PaymentRoutingModule { }
