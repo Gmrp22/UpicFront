@@ -6,6 +6,8 @@ import { AppComponent } from './componets/app/app.component';
 import { NavbarComponent } from './app/components/navbar/navbar.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 
+import { FlexLayoutModule } from '@angular/flex-layout';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -14,7 +16,8 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FlexLayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]
