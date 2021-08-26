@@ -7,17 +7,20 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { DownloadsModule } from './components/ModuloDescargas/downloads.module';
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     SidebarComponent,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     FlexLayoutModule,
+    DownloadsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
