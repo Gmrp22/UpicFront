@@ -9,11 +9,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { DownloadsModule } from './components/ModuloDescargas/downloads.module';
 import { PaymentModule } from './components/ModuloPagos/payment/payment.module';
+import { ReportComponent } from './components/ModuloReportes/report/report.component';
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     SidebarComponent,
+    ReportComponent,
 
   ],
   imports: [
