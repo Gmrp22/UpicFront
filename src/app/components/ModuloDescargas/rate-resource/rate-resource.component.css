@@ -14,7 +14,7 @@
     background-color: #fafafa;
     border: 4px solid #def2f1;
     border-radius: 10px;
-    margin: 50px 30vw 20px 30vw;
+    margin: 50px 30vw 20px 20vw;
     padding: 20px 10px 20px 40px;
     width: 28.4vw;
     height: 100%;
@@ -28,7 +28,7 @@
     color: #2b7a78;
     font-family: "Roboto Condensed", sans-serif;
     line-height: 42px;
-    font-size: 1.1em;
+    font-size: 1.2em;
     text-align: left;
     display: block;
     font-weight: bold;
@@ -47,7 +47,7 @@
     background-color: #2b7a78;
     color: #fafafa;
   }
-  
+    /* Image */
   .image-container {
     background-color: #def2f1;
     border: 1px solid #8492a6;
@@ -56,6 +56,7 @@
     height: 20vh;
     margin-bottom: 1.5vh;
   }
+    /* Title */
   .title {
     color: #17252a;
     font-family: "Ubuntu Condensed", sans-serif;

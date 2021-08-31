@@ -4,14 +4,18 @@ import { UploadResourceComponent } from './upload-resource/upload-resource.compo
 import { DownloadRoutingModule } from './download-routing.module';
 import { ResourceComponent } from './resource/resource.component';
 import { RateResourceComponent } from './rate-resource/rate-resource.component';
+import { AllresourcesComponent } from './allresources/allresources.component';
 import { MyresourcesComponent } from './myresources/myresources.component';
+import { SavedresourcesComponent } from './savedresources/savedresources.component';
 
 @NgModule({
   declarations: [
     UploadResourceComponent,
     ResourceComponent,
     RateResourceComponent,
+    AllresourcesComponent,
     MyresourcesComponent,
+    SavedresourcesComponent,
   ],
   imports: [
     CommonModule,
