@@ -1,6 +1,7 @@
 
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ChangeDateComponent } from './change-date/change-date.component';
 import { NewPaymentComponent } from './new-payment/new-payment.component';
 
 const routes: Routes = [
@@ -9,6 +10,10 @@ const routes: Routes = [
     children: [ {
       path: '',
       component: NewPaymentComponent
+    },
+    {
+      path: 'changeDate',
+      component: ChangeDateComponent
     }]
   }
 ];
