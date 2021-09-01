@@ -1,1 +1,36 @@
-<p>change-date works!</p>
+<div class="background">
+    <div class="bf-background" >
+        <div class="container">
+          <h1 class="title">Cambiar fecha de pago</h1>
+        </div>
+        <div class="form">
+          <div class="input warning">
+            <h3 class="warn">
+              Tu suscripción  se encuentra actualmente 
+              con fecha de pago día de cada mes, pero
+              puedes cambiarlo a cualquier día que sea
+              de tu conveniencia.
+            </h3>
+          </div>
+          <div class="input">
+            <h3 class="warn">
+              Nueva fecha de pago
+            </h3>
+          </div>
+          <form>
+            <div class="input">
+              <select class="form-control sel">
+                <option>Día</option>
+                <option *ngFor="let i of index">{{i}}</option>
+              </select>              
+              <h3 class="warn small">
+                de cada mes
+              </h3>
+            </div>
+            <div class="button">
+              <button type="submit" class="btn btn-outline-primary">Confirmar</button>
+            </div>
+          </form>            
+        </div>
+    </div>
+</div>
