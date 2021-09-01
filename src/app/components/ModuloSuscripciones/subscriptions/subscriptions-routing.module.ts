@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CancelSubscriptionComponent } from './cancel-subscription/cancel-subscription.component';
 import { ChangeSubscriptionComponent } from './change-subscription/change-subscription.component';
 import { NewSubscriptionComponent } from './new-subscription/new-subscription.component';
 
@@ -9,6 +10,10 @@ const routes: Routes = [
     children: [ {
       path: '',
       component: NewSubscriptionComponent
+    },
+    {
+      path: 'cancelSubscription',
+      component: CancelSubscriptionComponent
     },
     {
       path: 'changeSubscription',
