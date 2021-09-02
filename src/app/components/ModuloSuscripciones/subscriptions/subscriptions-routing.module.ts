@@ -8,15 +8,15 @@ const routes: Routes = [
   {
     path: '',
     children: [ {
-      path: 'newSubscription',
+      path: 'new-subscription',
       component: NewSubscriptionComponent
     },
     {
-      path: 'cancelSubscription',
+      path: 'cancel-subscription',
       component: CancelSubscriptionComponent
     },
     {
-      path: 'changeSubscription',
+      path: 'change-subscription',
       component: ChangeSubscriptionComponent
     }]
   }
