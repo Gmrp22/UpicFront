@@ -5,11 +5,11 @@ const routes: Routes = [
   {
     path: '',
     children: [ {
-      path: 'payment',
+      path: '',
       loadChildren: () => import('./components/ModuloPagos/payment/payment.module').then(mod => mod.PaymentModule),
     },
     {
-      path: 'subscription',
+      path: '',
       loadChildren: () => import('./components/ModuloSuscripciones/subscriptions/subscriptions.module').then(mod => mod.SubscriptionsModule),
     }]
   },
