@@ -10,6 +10,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { DownloadsModule } from './components/ModuloDescargas/downloads.module';
 import { PaymentModule } from './components/ModuloPagos/payment/payment.module';
 import { ReportComponent } from './components/ModuloReportes/report/report.component';
+import { UserModule } from './components/ModuloUsuarios/user.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +25,8 @@ import { ReportComponent } from './components/ModuloReportes/report/report.compo
     BrowserAnimationsModule,
     FlexLayoutModule,
     DownloadsModule,
-    PaymentModule
+    PaymentModule,
+    UserModule
   ],
   providers: [],
   bootstrap: [AppComponent]
