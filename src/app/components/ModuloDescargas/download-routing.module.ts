@@ -9,7 +9,7 @@ import { MyresourcesComponent } from './myresources/myresources.component';
 import { SavedresourcesComponent } from './savedresources/savedresources.component';
 const routes: Routes = [
   {
-    path: '',
+    path: 'download',
     children: [ {
       path: 'upload-resource',
       component: UploadResourceComponent
@@ -25,17 +25,17 @@ const routes: Routes = [
 
     },
     {
-      path: 'all-resources',
+      path: 'all-resource',
       component: AllresourcesComponent
 
     },
     {
-      path: 'my-resources',
+      path: 'my-resource',
       component: MyresourcesComponent
 
     },
     {
-      path: 'saved-resources',
+      path: 'saved-resource',
       component: SavedresourcesComponent
 
     }

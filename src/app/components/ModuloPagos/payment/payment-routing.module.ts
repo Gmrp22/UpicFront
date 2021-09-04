@@ -6,7 +6,7 @@ import { NewPaymentComponent } from './new-payment/new-payment.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'payment',
     children: [ {
       path: 'new-payment',
       component: NewPaymentComponent

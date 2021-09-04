@@ -6,7 +6,7 @@ import { NewSubscriptionComponent } from './new-subscription/new-subscription.co
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'subscription',
     children: [ {
       path: 'new-subscription',
       component: NewSubscriptionComponent

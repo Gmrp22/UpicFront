@@ -8,7 +8,7 @@ import { UserprofileComponent } from './userprofile/userprofile.component';
 import { DeactivateComponent } from './deactivate/deactivate.component';
 const routes: Routes = [
   {
-    path: '',
+    path: 'user',
     children: [ {
       path: 'login',
       component: LoginComponent
