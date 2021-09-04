@@ -16,7 +16,7 @@ const routes: Routes = [
   {
     path: '',
     children: [ {
-      path: 'downloads',
+      path: '',
       loadChildren: () => import('./components/ModuloDescargas/downloads.module').then(mod => mod.DownloadsModule),
     }]
   },
