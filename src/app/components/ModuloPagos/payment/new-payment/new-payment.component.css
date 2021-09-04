@@ -15,8 +15,8 @@
     border-radius: 10px;
     margin: 20px 34px 34px 20px;
     padding: 20px;    
-    width: calc(100vw - 6.5%);
-    height: calc(100vh - 14vh);
+    width: calc(100vw - 3%);
+    height: calc(100vh - 7vh);
 }
 
 .title {
@@ -25,7 +25,70 @@
     font-weight: bold;
     font-size: 28px;
     line-height: 36px;
-    width: 618px;
+    width: 800px;
+    text-align: center;
+    padding-left: 28%;
+    padding-top: 20px;
+  }
+  
+  .form{
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin: 20px;
+  }
+
+  input{
+    height: 48px;
+    background-color: #DEF2F1;
+    border: 1px solid #8492A6;
+    border-radius: 15px;
+    opacity: 0.56;
+    font-size: 19px;
+  }
+
+  ::placeholder{
+    opacity: 0.56;
+    color: #2B7A78;
+    font-family: Roboto Condensed;
+    line-height: 36px;
     text-align: left;
-    padding-left: 28.02%;
+    opacity: 1;
+    font-weight: bold;
+  }
+
+  .input{
+    text-align: center;    
+    margin-left: 25%;
+    padding: 5px;
+    width: 623px;    
+  }
+
+  .button{
+    padding: 20px;
+  }
+
+  button{
+    background-color: #FAFAFA;
+    border: 2px solid #2B7A78;
+    border-radius: 15px;
+    color: #2B7A78;
+    font-family: Roboto Condensed;
+    line-height: 36px;
+    width: 610px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 19px;
+  }
+
+  button:hover{
+    background-color: #2B7A78;
+    border: 2px solid #2B7A78;
+    border-radius: 15px;
+    color: #FAFAFA;
+  }
+
+  .warning{
+      padding-top: 20px;
+      font-size: 15px;
   }

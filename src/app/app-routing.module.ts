@@ -5,7 +5,7 @@ const routes: Routes = [
   {
     path: '',
     children: [ {
-      path: 'payment',
+      path: '',
       loadChildren: () => import('./components/ModuloPagos/payment/payment.module').then(mod => mod.PaymentModule),
     }]
   },
