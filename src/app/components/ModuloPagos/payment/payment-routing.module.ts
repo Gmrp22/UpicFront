@@ -8,11 +8,11 @@ const routes: Routes = [
   {
     path: '',
     children: [ {
-      path: 'newPayment',
+      path: 'new-payment',
       component: NewPaymentComponent
     },
     {
-      path: 'changeDate',
+      path: 'change-date',
       component: ChangeDateComponent
     }]
   }
