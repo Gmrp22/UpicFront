@@ -7,6 +7,10 @@ const routes: Routes = [
     children: [ {
       path: '',
       loadChildren: () => import('./components/ModuloPagos/payment/payment.module').then(mod => mod.PaymentModule),
+    },
+    {
+      path: '',
+      loadChildren: () => import('./components/ModuloSuscripciones/subscriptions/subscriptions.module').then(mod => mod.SubscriptionsModule),
     }]
   },
   {

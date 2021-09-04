@@ -1,0 +1,117 @@
+.background {
+    background-color: #F5F5F5;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+}
+
+.bf-background{
+    background-color: #FAFAFA;
+    border: 4px solid #DEF2F1;
+    border-radius: 10px;
+    margin: 20px 34px 34px 20px;
+    padding: 20px;    
+    width: calc(100vw - 3%);
+    height: calc(100vh - 7vh);
+}
+
+.title {
+    color: #17252A;
+    font-family: Ubuntu;
+    font-weight: bold;
+    font-size: 28px;
+    line-height: 36px;
+    width: 800px;
+    text-align: center;
+    padding-left: 28%;
+    padding-top: 20px;
+  }
+
+  .opt-container{
+    display: flex;
+    align-items: flex-end;
+    margin-left: 8%;
+  }
+
+  .option:hover{
+    border: 4px solid #3AAFA9;
+  }
+  
+  .option{
+    background-color: #F5F5F5;
+    border: 4px solid #DEF2F1;
+    border-radius: 10px;
+    margin: 20px 34px 34px 20px;
+    padding: 20px;    
+    width: calc(100vw - 90%);
+    height: calc(100vh - 41vh);
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin: 20px;
+    float: left;
+  }
+
+  .invisible{
+      opacity: 0;
+  }
+
+  .opt-title{
+    padding-top: 20px;
+    font-size: 21px;
+    color: #17252A;
+    font-family: Roboto Condensed;
+    line-height: 36px;
+    font-weight: bolder;
+}
+  .opt-price{
+    font-size: 26px;
+    color: #17252A;
+    font-family: Roboto Condensed;
+    line-height: 36px;
+    font-weight: bolder;
+}
+
+.button{
+    padding: 10px;
+    text-align: center;
+  }
+
+  button{
+    background-color: #FAFAFA;
+    border: 2px solid #2B7A78;
+    border-radius: 15px;
+    color: #2B7A78;
+    font-family: Roboto Condensed;
+    line-height: 36px;
+    width: 500px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 19px;
+  }
+
+  ul{
+      margin-left: 10px;
+  }
+
+  li{
+    color: #17252A;
+    font-family: Roboto Condensed;
+    font-size: 18px;
+    line-height: 30px;
+    width: 213px;
+    text-align: left;
+    padding: 10px;
+    font-weight: bold;
+  }
+
+  button:hover{
+    background-color: #2B7A78;
+    border: 2px solid #2B7A78;
+    border-radius: 15px;
+    color: #FAFAFA;
+  }
