@@ -1,0 +1,82 @@
+/* Basic component Styles */
+.background {
+  background-color: #f5f5f5;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  overflow: auto;
+}
+
+.bf-background {
+  background-color: #fafafa;
+  border: 4px solid #def2f1;
+  border-radius: 10px;
+  margin: 50px 30vw 20px 20vw;
+  padding: 20px 10px 20px 40px;
+  width: 70vw;
+  height: 100%;
+}
+
+/* Form components styles */
+.form-container {
+  font-size: 1vw;
+}
+
+.form-label {
+  color: #2b7a78;
+  font-family: "Roboto Condensed", sans-serif;
+  line-height: 22px;
+  font-size: 1.1em;
+  text-align: left;
+  display: block;
+  font-weight: bold;
+  margin-bottom: 0.5vh;
+}
+  /* Image */
+
+.image-container {
+  background-color: #def2f1;
+  border: 1px solid #8492a6;
+  border-radius: 15px;
+  width: 18vw;
+  height: 20vh;
+  margin-bottom: 1.5vh;
+}
+.data-container {
+  border-radius: 15px;
+  background-color: #fafafa;
+  border: 1px solid #8492a6;
+  border-radius: 15px;
+  width: 18vw;
+  height: 13vh;
+  margin-bottom: 1.5vh;
+  padding: 0.8vw;
+  font-size: 1vw;
+}
+.col-sm{
+  margin-bottom: 4vh;;
+}
+  /* Title */
+.title {
+  color: #17252a;
+  font-family: "Ubuntu Condensed", sans-serif;
+  font-size: 4vh;
+  line-height: 58px;
+  width: 40vw;
+  text-align: center;
+  padding-left: 15vw;
+  font-weight: bold;
+  margin-bottom: 8vh;
+}
+/* Responsive */
+@media screen and (max-width: 969px) {
+  .col-sm {
+    width: 50%;
+  }
+  .col-2 {
+    width: 0%;
+  }
+}
