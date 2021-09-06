@@ -6,15 +6,23 @@
     overflow: auto;
   }
   
-  .bf-background {
+  .bf-main-background {
     background-color: #fafafa;
     border: 4px solid #def2f1;
     border-radius: 10px;
-    margin: 50px 30vw 20px 20vw;
+    margin: 20px 34px 34px 20px;
+    padding: 20px;    
+    width: calc(100vw - 3%);
+    height: calc(100vh - 7vh);
+  }  
+  .bf-background {
+    background-color: #fafafa;
+    /* margin: 90px 20vw 20px 20vw; */
     padding: 20px 10px 20px 40px;
-    width: 70vw;
-    height: 100%;
+    width: 100%;
+    height: 80%;
   }
+
   
   /* Form components styles */
   .form-container {
@@ -24,7 +32,7 @@
   .form-label {
     color: #2b7a78;
     font-family: "Roboto Condensed", sans-serif;
-    line-height: 22px;
+    line-height: 25px;
     font-size: 1.1em;
     text-align: left;
     display: block;
