@@ -1,62 +1,67 @@
 <div class="background">
-    <div class="form-container">
-      <div class="col-sm bf-background">
+  <div class="form-container">
+    <div class="bf-main-background">
+      <div class=" bf-background">
         <h1 class="title">Perfil de usuario</h1>
-  
+
         <div class="container">
-          <div class="row ">
-            <div class="col-sm ">
+          <div class="row">
+            <div class="col-sm">
               <form>
-                <div >
+                <div>
                   <div class="image-container rounded-circle"></div>
                   <div class="data-container">
-  
-  
-                    <label class="form-label data-label">Imagen de perfil </label>
-  
-                    <label class="form-label data-label">Cerrar sesion </label>
+                    <label class="form-label data-label"
+                      >Imagen de perfil
+                    </label>
 
+                    <label class="form-label data-label">Cerrar sesion </label>
                   </div>
                 </div>
               </form>
             </div>
-            <div class="col-sm ">
-                <form>
-                  <div >
-                    <div class="data-container">
-    
-    
-                      <label class="form-label data-label">Nombre </label>
-                      <label class="form-label data-label">Apellido </label>
-                      <label class="form-label data-label">Correo </label>
-                      <label class="form-label data-label">Tipo de suscripcion </label>
-  
-                    </div>
-                  </div>
-                </form>
-              </div>
-        </div>
-    </div>
-            <div class="container actions-div">
-                <div class="row">
-                  <div class="col-sm">
-                    <label class="form-label col1">
-                        <a class ="form-label" routerLink="/edit-user">
-                        Editar informacion </a></label>
-                    <label class="form-label col1">Desactivar cuenta </label>
-                  </div>
-             
-                  <div class="col-sm">
-                    <label class="form-label col2">
-                        <a class ="form-label" routerLink="/password-reset">
-                            Reinicio de contraseña </a>
+            <div class="col-sm">
+              <form>
+                <div>
+                  <div class="data-container">
+                    <label class="form-label data-label">Nombre </label>
+                    <label class="form-label data-label">Apellido </label>
+                    <label class="form-label data-label">Correo </label>
+                    <label class="form-label data-label"
+                      >Tipo de suscripción
                     </label>
-                    <label class="form-label col2">Suscripciones </label>
                   </div>
                 </div>
-              </div>
-         
-       
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="container actions-div">
+          <div class="row">
+            <div class="col-sm">
+              <label class="form-label col1">
+                <a class="form-label" routerLink="/user/edit-user">
+                  Editar información
+                </a></label
+              >
+              <label class="form-label col1">
+                <a class="form-label" routerLink="/user/deactivate-user">
+                  Desactivar cuenta
+                </a>
+              </label>
+            </div>
+
+            <div class="col-sm">
+              <label class="form-label col2">
+                <a class="form-label" routerLink="user/password-reset">
+                  Reinicio de contraseña
+                </a>
+              </label>
+              <label class="form-label col2">Suscripciones </label>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
+</div>
