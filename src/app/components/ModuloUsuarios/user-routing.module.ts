@@ -6,6 +6,7 @@ import { EditUserInfoComponent } from './edit-user-info/edit-user-info.component
 import { PasswordresetComponent } from './passwordreset/passwordreset.component';
 import { UserprofileComponent } from './userprofile/userprofile.component';
 import { DeactivateComponent } from './deactivate/deactivate.component';
+
 const routes: Routes = [
   {
     path: 'user',
@@ -19,7 +20,7 @@ const routes: Routes = [
     },
     {
       path: 'edit-user',
-      component: EditUserInfoComponent
+      component: EditUserInfoComponent,
     },
     {
       path: 'password-reset',
