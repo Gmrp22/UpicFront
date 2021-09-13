@@ -5,12 +5,7 @@
 export const environment = {
   production: false,
   firebaseConfig : {
-    apiKey: "AIzaSyA2DBRU8zFvBLABj8EcCVbyVVt4opPGwEw",
-    authDomain: "upicfront.firebaseapp.com",
-    projectId: "upicfront",
-    storageBucket: "upicfront.appspot.com",
-    messagingSenderId: "116656208174",
-    appId: "1:116656208174:web:e24e3d504e0d1bf20522bf"
+
   }
 };
 

@@ -6,6 +6,7 @@ import { EditUserInfoComponent } from './edit-user-info/edit-user-info.component
 import { PasswordresetComponent } from './passwordreset/passwordreset.component';
 import { UserprofileComponent } from './userprofile/userprofile.component';
 import { DeactivateComponent } from './deactivate/deactivate.component';
+import { AuthGuard } from 'src/app/services/moduloUsuarios/auth.guard';
 
 const routes: Routes = [
   {
@@ -21,18 +22,22 @@ const routes: Routes = [
     {
       path: 'edit-user',
       component: EditUserInfoComponent,
+      canActivate: [AuthGuard],
     },
     {
       path: 'password-reset',
-      component: PasswordresetComponent
+      component: PasswordresetComponent,
+      canActivate: [AuthGuard],
     },
     {
       path: 'profile-user',
-      component: UserprofileComponent
+      component: UserprofileComponent,
+      canActivate: [AuthGuard],
     },
     {
       path: 'deactivate-user',
-      component: DeactivateComponent
+      component: DeactivateComponent,
+      canActivate: [AuthGuard],
     },
   ]
   }
