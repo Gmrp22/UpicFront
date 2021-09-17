@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthGuard } from 'src/app/services/moduloUsuarios/auth.guard';
+import { AngularFireAuthGuard } from '@angular/fire/compat/auth-guard';
 
 const routes: Routes = [
   {
@@ -12,7 +12,7 @@ const routes: Routes = [
           import('./components/ModuloPagos/payment/payment.module').then(
             (mod) => mod.PaymentModule
           ),
-        canActivate: [AuthGuard],
+        canActivate: [AngularFireAuthGuard],
       },
       {
         path: '',
@@ -20,7 +20,7 @@ const routes: Routes = [
           import(
             './components/ModuloSuscripciones/subscriptions/subscriptions.module'
           ).then((mod) => mod.SubscriptionsModule),
-        canActivate: [AuthGuard],
+          canActivate: [AngularFireAuthGuard],
       },
     ],
   },
@@ -33,7 +33,7 @@ const routes: Routes = [
           import('./components/ModuloDescargas/downloads.module').then(
             (mod) => mod.DownloadsModule
           ),
-        canActivate: [AuthGuard],
+          canActivate: [AngularFireAuthGuard],
       },
     ],
   },

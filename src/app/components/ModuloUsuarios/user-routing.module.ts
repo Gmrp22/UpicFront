@@ -6,8 +6,7 @@ import { EditUserInfoComponent } from './edit-user-info/edit-user-info.component
 import { PasswordresetComponent } from './passwordreset/passwordreset.component';
 import { UserprofileComponent } from './userprofile/userprofile.component';
 import { DeactivateComponent } from './deactivate/deactivate.component';
-import { AuthGuard } from 'src/app/services/moduloUsuarios/auth.guard';
-
+import { AngularFireAuthGuard } from '@angular/fire/compat/auth-guard';
 const routes: Routes = [
   {
     path: 'user',
@@ -22,22 +21,22 @@ const routes: Routes = [
     {
       path: 'edit-user',
       component: EditUserInfoComponent,
-      canActivate: [AuthGuard],
+      canActivate: [AngularFireAuthGuard],
     },
     {
       path: 'password-reset',
       component: PasswordresetComponent,
-      canActivate: [AuthGuard],
+      canActivate: [AngularFireAuthGuard],
     },
     {
       path: 'profile-user',
       component: UserprofileComponent,
-      canActivate: [AuthGuard],
+      canActivate: [AngularFireAuthGuard],
     },
     {
       path: 'deactivate-user',
       component: DeactivateComponent,
-      canActivate: [AuthGuard],
+      canActivate: [AngularFireAuthGuard],
     },
   ]
   }

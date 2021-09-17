@@ -1,35 +1,36 @@
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
 import firebase from 'firebase/compat/app';
-import { Observable, ObservedValuesFromArray } from 'rxjs';
-import { User } from './user.interface';
+import { Observable, Subject } from 'rxjs';
+
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   public signedIn: Observable<any>;
+  public logged: Boolean = false;
   constructor(private auth: AngularFireAuth, private router: Router) {
-   this.signedIn = new Observable(subscriber => {
-      this.auth.onAuthStateChanged(user => {
-        if(user){
-          console.log("Loggeado")
-        }
-        else{
+    this.signedIn = new Observable((subscriber) => {
+      this.auth.onAuthStateChanged((user) => {
+        if (user) {
+          this.logged = true;
+          console.log('Loggeado', this.logged);
+          subscriber.next(true);
+        } else {
+          this.logged = false;
+          subscriber.next(false);
+          console.log('NO Loggeado', this.logged);
           this.router.navigateByUrl('user/login');
         }
-      }
-        )
-
-    })
+      });
+    });
   }
 
   loginGoogle() {
     this.auth
       .signInWithPopup(new firebase.auth.GoogleAuthProvider())
       .then((value) => {
-        // this.logout()
         this.router.navigateByUrl('download/all-resource');
       })
       .catch((error) => {
