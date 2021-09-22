@@ -2,11 +2,11 @@
     <div class="form-container container">
       <div class="col-sm bf-background">
           <h1 class=title>Inicio de sesion</h1>
-        <form class="login-form">
+        <form class="login-form" [formGroup]="loginForm">
           <div class="form-group">
-            <input type="text" class="form-control" placeholder="Correo" />
+            <input type="text" class="form-control" placeholder="Correo" formControlName="email"  />
   
-            <input type="text" class="form-control" placeholder="Contraseña" />
+            <input type="text" class="form-control" placeholder="Contraseña" formControlName="password" />
   
           </div>
   
@@ -18,7 +18,7 @@
         <div class="form-buttons">
          
             <div >
-              <button type="button" class="btn btn-outline-info" id="button-accept">Iniciar sesion</button>
+              <button type="submit" class="btn btn-outline-info" id="button-accept" (click) ="loginEmail()">Iniciar sesion</button>
             </div>
             
           <div class="options-login">

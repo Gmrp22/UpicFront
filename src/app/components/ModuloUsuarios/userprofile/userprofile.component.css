@@ -54,6 +54,13 @@
     margin-bottom: 1.5vh;
     margin-left: 1.5vw;
   }
+  .image-contained {
+    background-color: #def2f1;
+    border: 1px solid #8492a6;
+    width: 13vw;
+    height: 30vh;
+    margin-bottom: 1.5vh;
+  }
   .data-container {
     width: 18vw;
     height: 13vh;

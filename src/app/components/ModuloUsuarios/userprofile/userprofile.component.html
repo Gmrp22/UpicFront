@@ -9,7 +9,9 @@
             <div class="col-sm">
               <form>
                 <div>
-                  <div class="image-container rounded-circle"></div>
+                  <div class="image-container rounded-circle">
+                    <img class="image-contained rounded-circle" src={{this.user?.img}}>
+                  </div>
                   <div class="data-container">
                     <label class="form-label data-label"
                       >Imagen de perfil
@@ -24,9 +26,8 @@
               <form>
                 <div>
                   <div class="data-container">
-                    <label class="form-label data-label">Nombre </label>
-                    <label class="form-label data-label">Apellido </label>
-                    <label class="form-label data-label">Correo </label>
+                    <label class="form-label data-label">Nombre: {{this.user?.nombre}} </label>
+                    <label class="form-label data-label">Email: {{this.user?.email}} </label>
                     <label class="form-label data-label"
                       >Tipo de suscripción
                     </label>

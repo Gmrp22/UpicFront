@@ -17,6 +17,7 @@ import { PaymentModule } from './components/ModuloPagos/payment/payment.module';
 import { ReportComponent } from './components/ModuloReportes/report/report.component';
 import { UserModule } from './components/ModuloUsuarios/user.module';
 import { environment } from 'src/environments/environment';
+import { HttpClientModule } from  '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,6 +37,7 @@ import { environment } from 'src/environments/environment';
     // Firebase config
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

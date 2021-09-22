@@ -7,6 +7,7 @@ import { EditUserInfoComponent } from './edit-user-info/edit-user-info.component
 import { PasswordresetComponent } from './passwordreset/passwordreset.component';
 import { UserprofileComponent } from './userprofile/userprofile.component';
 import { DeactivateComponent } from './deactivate/deactivate.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     LoginComponent,
@@ -19,6 +20,8 @@ import { DeactivateComponent } from './deactivate/deactivate.component';
   imports: [
     CommonModule,
     UserRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class UserModule { }
