@@ -1,7 +1,7 @@
 export interface UserInfo  {
-    nombre: String|null,
+    nombres: String|null,
     email : String|null,
-    rol : Number|null,
+    roles : Number|null,
     img: String|null
 
 }

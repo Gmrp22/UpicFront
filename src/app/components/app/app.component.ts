@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {
   Router,
   ActivatedRoute,
-  ParamMap,
   Event as NavigationEvent,
   NavigationStart,
 } from '@angular/router';
@@ -16,15 +15,14 @@ export class AppComponent {
   title = 'UpicFront';
   public url = true;
   private event$;
-// Get the active route
-  constructor(private router: Router, private authService : AuthService) {
+  // Gets the active route
+  constructor(private router: Router, private authService: AuthService) {
     this.event$ = this.router.events.subscribe((event: NavigationEvent) => {
       if (event instanceof NavigationStart) {
-        if((event.url == '/user/login') || (event.url == '/user/create-user')){
+        if (event.url == '/user/login' || event.url == '/user/create-user') {
           this.url = true;
-        }
-        else{
-          this.url=false;
+        } else {
+          this.url = false;
         }
       }
     });

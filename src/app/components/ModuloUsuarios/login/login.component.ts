@@ -6,7 +6,7 @@ import { FormBuilder } from '@angular/forms';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
   public loginForm = this.formBuilder.group({
     password: '',
     email: '',
@@ -16,17 +16,19 @@ export class LoginComponent implements OnInit {
     private authService: AuthService
   ) {}
 
-  ngOnInit(): void {}
-  loginEmail(){
-    let pass = this.loginForm.get('password')?.value
-    let email = this.loginForm.get('email')?.value 
-    console.log(email)
+  /**
+   *Calls login with email and passes user data
+   */
+  loginEmail() {
+    let pass = this.loginForm.get('password')?.value;
+    let email = this.loginForm.get('email')?.value;
+    console.log(email);
     this.authService.loginEmail(email, pass);
   }
+  /**
+  Calls login with google method
+  */
   loginGoogle() {
     this.authService.loginGoogle();
-  }
-  logout() {
-    this.authService.logout();
   }
 }

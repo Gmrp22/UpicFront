@@ -1,6 +1,6 @@
 export interface User  {
-    nombre: String|null,
-    email : String|null,
-    rol : Number|null,
+    nombres: String|null,
+    correo : String|null,
+    roles : Array<Number>,
 
 }
