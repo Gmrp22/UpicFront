@@ -12,6 +12,7 @@ export class DeactivateComponent {
    *Calls deactivate method
    */
   deactivateAccount() {
+
     this.authService.deactivate();
   }
 }

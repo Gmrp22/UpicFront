@@ -7,6 +7,8 @@ import { UserInfo } from './userInfo';
 import { UserService } from './user.service';
 import { User } from './user.interface';
 import { FormGroup } from '@angular/forms';
+import { NotificationService } from '../notifications/notification.service';
+import { HttpResponse } from '@angular/common/http';
 @Injectable({
   providedIn: 'root',
 })
@@ -21,7 +23,8 @@ export class AuthService {
   constructor(
     private auth: AngularFireAuth,
     private router: Router,
-    private userService: UserService
+    private userService: UserService,
+    private notificationService: NotificationService
   ) {
     this.signedIn = new Observable((subscriber) => {
       this.auth.onAuthStateChanged((user) => {
@@ -29,6 +32,7 @@ export class AuthService {
           //Notify state, changes flag and sends user data
           this.logged = true;
           console.log('Loggeado', this.logged);
+
           subscriber.next(true);
           let userInfo = {
             nombres: user?.displayName + '',
@@ -52,6 +56,7 @@ export class AuthService {
    *if its a new user it will also send a post request of  the new user to the API
    */
   loginGoogle() {
+    this.auth.signInWithCustomToken;
     this.auth
       .signInWithPopup(new firebase.auth.GoogleAuthProvider())
       .then((value) => {
@@ -62,7 +67,18 @@ export class AuthService {
             correo: value.user?.email + '',
             roles: [1],
           };
-          this.userService.createUser(newUser).subscribe((newu) => {});
+          this.userService.createUser(newUser).subscribe(
+            (res) => {
+              console.log('HTTP response', res);
+              this.notificationService.success2('Cuenta creada');
+            },
+            (err) => {
+              console.log('HTTP Error', err);
+              this.notificationService.fail('Cuenta no creada');
+            },
+            () => console.log('HTTP request completed.')
+            
+          );
           this.router.navigateByUrl('download/all-resource');
         } else {
           this.router.navigateByUrl('download/all-resource');
@@ -104,7 +120,18 @@ export class AuthService {
           };
           value.user?.updateProfile({ displayName: newUser.nombres });
 
-          this.userService.createUser(newUser).subscribe((newu) => {});
+          this.userService.createUser(newUser).subscribe(
+            (res) => {
+              console.log('HTTP response', res);
+              this.notificationService.success2('Cuenta creada');
+            },
+            (err) => {
+              console.log('HTTP Error', err);
+              this.notificationService.fail('Cuenta no creada');
+            },
+            () => console.log('HTTP request completed.')
+            
+          );
 
           this.router.navigateByUrl('download/all-resource');
         }
@@ -118,27 +145,43 @@ export class AuthService {
    *Logs out
    */
   logout() {
-    this.auth
-      .signOut()
-      .then((value) => {
-        this.router.navigateByUrl('user/login');
-      })
-      .catch((error) => {
+    this.notificationService.loading();
+    this.notificationService.exitLoading(1000);
+    setTimeout(() => {
+      this.auth.signOut().catch((error) => {
         console.log('Something went wrong: ', error);
+        this.notificationService.error('No se pudo cerrar sesión');
       });
+    }, 1000);
   }
 
   /**
    *Deactivates user
    */
   deactivate() {
+    this.notificationService.loading();
     this.auth.currentUser
       .then((user) => {
         let email = user?.email + '';
         //Delete user from DB
-        this.userService.deleteUser(email).subscribe((response) => {});
-        user?.delete();
-        this.router.navigateByUrl('user/login');
+        this.notificationService.exitLoading(1000);
+        this.userService
+          .deleteUser(email)
+          .subscribe(
+          (res) => {
+            console.log('HTTP response', res);
+            this.notificationService.success('Cuenta desactivada');
+            user?.delete();
+            this.logout();
+          },
+          (err) => {
+            console.log('HTTP Error', err);
+            this.notificationService.error(
+              'No se ha podido desactivar su cuenta'
+            );
+          },
+          () => console.log('HTTP request completed.')
+          );
       })
       .catch((error) => {
         console.log('Something went wrong: ', error);

@@ -18,6 +18,7 @@ import { ReportComponent } from './components/ModuloReportes/report/report.compo
 import { UserModule } from './components/ModuloUsuarios/user.module';
 import { environment } from 'src/environments/environment';
 import { HttpClientModule } from  '@angular/common/http';
+import { fireKey } from 'src/environments/firebaseKey';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +36,7 @@ import { HttpClientModule } from  '@angular/common/http';
     PaymentModule,
     UserModule,
     // Firebase config
-    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireModule.initializeApp(fireKey.firebaseConfig),
     AngularFireAuthModule,
     HttpClientModule
   ],
