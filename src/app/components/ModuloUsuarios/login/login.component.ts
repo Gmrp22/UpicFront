@@ -22,7 +22,6 @@ export class LoginComponent {
   loginEmail() {
     let pass = this.loginForm.get('password')?.value;
     let email = this.loginForm.get('email')?.value;
-    console.log(email);
     this.authService.loginEmail(email, pass);
   }
   /**

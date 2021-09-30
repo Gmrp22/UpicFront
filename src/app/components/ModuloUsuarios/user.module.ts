@@ -8,6 +8,8 @@ import { PasswordresetComponent } from './passwordreset/passwordreset.component'
 import { UserprofileComponent } from './userprofile/userprofile.component';
 import { DeactivateComponent } from './deactivate/deactivate.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { UserInterceptorService } from 'src/app/services/moduloUsuarios/user-interceptor.service';
 @NgModule({
   declarations: [
     LoginComponent,
@@ -22,6 +24,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     UserRoutingModule,
     FormsModule,
     ReactiveFormsModule
+  ],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: UserInterceptorService,
+      multi: true
+    }
   ]
 })
 export class UserModule { }

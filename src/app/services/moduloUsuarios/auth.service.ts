@@ -3,9 +3,9 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
 import firebase from 'firebase/compat/app';
 import { Observable, Subject, Subscriber, Subscription } from 'rxjs';
-import { UserInfo } from './userInfo';
+import { UserInfo } from './interface/userInfo';
 import { UserService } from './user.service';
-import { User } from './user.interface';
+import { User } from './interface/user.interface';
 import { FormGroup } from '@angular/forms';
 import { NotificationService } from '../notifications/notification.service';
 import { HttpResponse } from '@angular/common/http';
@@ -32,7 +32,6 @@ export class AuthService {
           //Notify state, changes flag and sends user data
           this.logged = true;
           console.log('Loggeado', this.logged);
-
           subscriber.next(true);
           let userInfo = {
             nombres: user?.displayName + '',
@@ -67,25 +66,18 @@ export class AuthService {
             correo: value.user?.email + '',
             roles: [1],
           };
-          this.userService.createUser(newUser).subscribe(
-            (res) => {
-              console.log('HTTP response', res);
-              this.notificationService.success2('Cuenta creada');
-            },
-            (err) => {
-              console.log('HTTP Error', err);
-              this.notificationService.fail('Cuenta no creada');
-            },
-            () => console.log('HTTP request completed.')
-            
-          );
+          this.userService.createUser(newUser).subscribe((res) => {
+            console.log('HTTP response', res);
+            this.notificationService.success2('Bienvenido a Upic');
+          });
           this.router.navigateByUrl('download/all-resource');
         } else {
           this.router.navigateByUrl('download/all-resource');
         }
       })
-      .catch((error) => {
-        console.log('Something went wrong: ', error);
+      .catch((err) => {
+        let error = this.getFirebaseErrorMessage(err);
+        this.notificationService.fail(error);
       });
   }
 
@@ -99,7 +91,8 @@ export class AuthService {
         this.router.navigateByUrl('download/all-resource');
       })
       .catch((err) => {
-        console.log('Something went wrong: ', err.message);
+        let error = this.getFirebaseErrorMessage(err);
+        this.notificationService.fail(error);
       });
   }
   /**
@@ -120,24 +113,17 @@ export class AuthService {
           };
           value.user?.updateProfile({ displayName: newUser.nombres });
 
-          this.userService.createUser(newUser).subscribe(
-            (res) => {
-              console.log('HTTP response', res);
-              this.notificationService.success2('Cuenta creada');
-            },
-            (err) => {
-              console.log('HTTP Error', err);
-              this.notificationService.fail('Cuenta no creada');
-            },
-            () => console.log('HTTP request completed.')
-            
-          );
+          this.userService.createUser(newUser).subscribe((res) => {
+            console.log('HTTP response', res);
+            this.notificationService.success2('Bienvenido a Upic');
+          });
 
           this.router.navigateByUrl('download/all-resource');
         }
       })
-      .catch((error) => {
-        console.log('Something went wrong: ', error);
+      .catch((err) => {
+        let error = this.getFirebaseErrorMessage(err);
+        this.notificationService.fail(error);
       });
   }
 
@@ -165,26 +151,54 @@ export class AuthService {
         let email = user?.email + '';
         //Delete user from DB
         this.notificationService.exitLoading(1000);
-        this.userService
-          .deleteUser(email)
-          .subscribe(
-          (res) => {
-            console.log('HTTP response', res);
-            this.notificationService.success('Cuenta desactivada');
-            user?.delete();
-            this.logout();
-          },
-          (err) => {
-            console.log('HTTP Error', err);
-            this.notificationService.error(
-              'No se ha podido desactivar su cuenta'
-            );
-          },
-          () => console.log('HTTP request completed.')
-          );
+        this.userService.deleteUser(email).subscribe((res) => {
+          this.notificationService.success('Cuenta desactivada');
+          user?.delete();
+          this.logout();
+        });
       })
       .catch((error) => {
         console.log('Something went wrong: ', error);
       });
+  }
+  
+  /**
+   *Error message
+   */
+  private getFirebaseErrorMessage(error: any) {
+    switch (error.code) {
+      case 'auth/email-already-in-use':
+        return 'Ya existe una cuenta con este email.';
+        break;
+      case 'auth/weak-password':
+        return 'La contraseña debe de contener mas de seis caracteres.';
+        break;
+      case 'auth/wrong-password':
+        return 'Combinación incorrecta.';
+        break;
+      case 'auth/user-not-found':
+        return 'No existe esta cuenta.';
+        break;
+
+      case 'auth/user-disabled':
+        return 'La cuenta ha desactivada.';
+        break;
+
+      case 'auth/operation-not-allowed':
+        return 'Error';
+        break;
+
+      case 'auth/operation-not-allowed':
+        return 'Error en el servidor, vuelva a intentar';
+        break;
+
+      case 'auth/invalid-email':
+        return 'Email no valido';
+        break;
+      case 'auth/too-many-requests':
+        return 'Demasiados intentos, pruebe mas tarde';
+      default:
+        return 'Fallo de inicio de sesión';
+    }
   }
 }

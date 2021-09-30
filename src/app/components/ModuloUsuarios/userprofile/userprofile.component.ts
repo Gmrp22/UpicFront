@@ -1,7 +1,7 @@
 import { Component, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/services/moduloUsuarios/auth.service';
-import { UserInfo } from 'src/app/services/moduloUsuarios/userInfo';
+import { UserInfo } from 'src/app/services/moduloUsuarios/interface/userInfo';
 @Component({
   selector: 'app-userprofile',
   templateUrl: './userprofile.component.html',

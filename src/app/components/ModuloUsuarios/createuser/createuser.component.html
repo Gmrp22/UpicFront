@@ -1,47 +1,113 @@
 <div class="background">
-  <div class="form-container ">
+  <div class="form-container">
     <div class="bf-main-background">
-    <div class="col-sm bf-background">
-        <h1 class=title>Crear usuario</h1>
-      <form [formGroup]="signupForm">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Nombre" formControlName="name" />
+      <div class="col-sm bf-background">
+        <h1 class="title">Crear usuario</h1>
+        <form [formGroup]="signupForm">
+          <div class="form-group">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Nombre"
+              formControlName="name"
+            />
+            <span
+              class="text-danger"
+              *ngIf="
+                (registerFormControl.name.touched || submitted) &&
+                registerFormControl.name.errors?.required
+              "
+            >
+              El nombre es requerido
+            </span>
 
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Correo"
+              formControlName="email"
+            />
+            <span
+              class="text-danger"
+              *ngIf="
+                (registerFormControl.email.touched || submitted) &&
+                registerFormControl.email.errors?.required
+              "
+            >
+            El correo es requerido
+            </span>
+            <span class="text-danger"
+            *ngIf="registerFormControl.email.touched && registerFormControl.email.errors?.email">
+            Correo no valido
+        </span>
+            <input
+              type="password"
+              class="form-control"
+              placeholder="Contraseña"
+              formControlName="password"
+            />
+            <span
+              class="text-danger"
+              *ngIf="
+                (registerFormControl.password.touched || submitted) &&
+                registerFormControl.password.errors?.required
+              "
+            >
+            La contraseña es requerida
+            </span>
 
-          <input type="text" class="form-control" placeholder="Correo" formControlName="email"/>
-
-          <input
-            type="password"
-            class="form-control"
-            placeholder="Contraseña"
-            formControlName="password"
-          />
-
-          <input
-            type="text"
-            class="form-control"
-            placeholder="Confirmar contraseña"
-            formControlName="cpassword"
-          />
-        </div>
-
-      </form>
-      <div class="container form-buttons">
-        <div class="row">
-          <div class="col-sm">
-            <button type="button" class="btn btn-outline-danger" id="button-cancel">Cancelar</button>
+            <input
+              type="password"
+              class="form-control"
+              placeholder="Confirmar contraseña"
+              formControlName="cpassword"
+            />
+            <span
+              class="text-danger"
+              *ngIf="
+                (registerFormControl.password.touched || submitted) &&
+                registerFormControl.password.errors?.required
+              "
+            >
+              La contraseña es requerida
+            </span>
+            <span
+              class="text-danger"
+              *ngIf="
+                registerFormControl.cpassword.touched &&
+                registerFormControl.cpassword.errors?.passwordMismatch
+              "
+            >
+              Las contraseñas no coinciden
+            </span>
           </div>
-          <div class="col-sm col-2">
-         
-          </div>
-          <div class="col-sm">
-            <button type="button" (click)="submit()"  class="btn btn-outline-info" id="button-accept">Aceptar</button>
+        </form>
+        <div class="container form-buttons">
+          <div class="row">
+            <div class="col-sm">
+              <button
+                type="button"
+                class="btn btn-outline-danger"
+                routerLink="/user/login"
+                id="button-cancel"
+              >
+                Cancelar
+              </button>
+            </div>
+            <div class="col-sm col-2"></div>
+            <div class="col-sm">
+              <button
+                type="button"
+                (click)="submit()"
+                class="btn btn-outline-info"
+                id="button-accept"
+              >
+                Aceptar
+              </button>
+            </div>
           </div>
         </div>
       </div>
-    
     </div>
-  </div>
-   
   </div>
 </div>

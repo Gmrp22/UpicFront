@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/moduloUsuarios/auth.service';
+import { FormValidatorService } from 'src/app/services/moduloUsuarios/form-validator.service';
 @Component({
   selector: 'app-createuser',
   templateUrl: './createuser.component.html',
@@ -16,17 +17,38 @@ export class CreateuserComponent {
     email: '',
     cpassword: '',
   });
+  submitted = false;
   constructor(
     private formBuilder: FormBuilder,
-    private authService: AuthService
-  ) {}
+    private authService: AuthService,
+    private customValidator: FormValidatorService
+  ) {
+    this.signupForm = this.formBuilder.group(
+      {
+        name: ['', Validators.required],
+        email: ['', [Validators.required, Validators.email]],
+        password: ['', [Validators.required]],
+        cpassword: ['', [Validators.required]],
+      },
+      {
+        validator: this.customValidator.MatchPassword('password', 'cpassword'),
+      }
+    );
+  }
 
   /**
    *Calls create user method
    */
   submit() {
-    this.authService.emailSignup(this.signupForm);
+    this.submitted = true;
+    if (this.signupForm.valid) {
+      this.authService.emailSignup(this.signupForm);
+    } else {
+      console.log('.nek');
+    }
   }
 
-  validator() {}
+  get registerFormControl() {
+    return this.signupForm.controls;
+  }
 }
