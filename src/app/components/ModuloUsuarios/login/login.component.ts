@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/moduloUsuarios/auth.service';
 import { FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -13,7 +14,8 @@ export class LoginComponent {
   });
   constructor(
     private formBuilder: FormBuilder,
-    private authService: AuthService
+    private authService: AuthService,
+    private route: Router
   ) {}
 
   /**
@@ -29,5 +31,9 @@ export class LoginComponent {
   */
   loginGoogle() {
     this.authService.loginGoogle();
+  }
+
+  create(){
+    this.route.navigateByUrl('user/create-user');
   }
 }

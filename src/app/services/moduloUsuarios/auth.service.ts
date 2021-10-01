@@ -2,13 +2,12 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
 import firebase from 'firebase/compat/app';
-import { Observable, Subject, Subscriber, Subscription } from 'rxjs';
+import { Observable } from 'rxjs';
 import { UserInfo } from './interface/userInfo';
 import { UserService } from './user.service';
-import { User } from './interface/user.interface';
 import { FormGroup } from '@angular/forms';
 import { NotificationService } from '../notifications/notification.service';
-import { HttpResponse } from '@angular/common/http';
+
 @Injectable({
   providedIn: 'root',
 })
