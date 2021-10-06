@@ -4,41 +4,17 @@
           <h1 class="title">Cambiar plan de suscripción</h1>
         </div>
         <div class="opt-container">
-            <div class="option">                     
-                <h2 class="opt-title">Gratis</h2>
+            <div *ngFor="let plan of plans" [ngStyle]="{'border-color': planID === plan.id ? '#3AAFA9' : '#DEF2F1' }" (click)="suscribe(plan.id)" class="option">                     
+                <h2 class="opt-title">{{plan.nombre}}</h2>
                 <ul>
-                    <li>Acceso a algunas imágenes</li>
-                    <li>Calidad buena</li>
-                    <li class="invisible"></li>
+                    <li *ngFor="let des of plan.desList">{{des}}</li>
                 </ul>
-                <h1 class="opt-price">$0.00</h1>
-            </div>
-            <div class="option">                     
-                <h2 class="opt-title">Plata</h2>
-                <ul>
-                    <li>Acceso a todas las imágenes</li>
-                    <li>Calidad excelente</li>
-                    <li>Acceso a algunos videos</li>
-                </ul>
-                <div class="form-group opt-price-cont">
-                    <h1 class="opt-price">$0.00</h1>
-                </div>
-            </div>
-            <div class="option">                     
-                <h2 class="opt-title">Oro</h2>
-                <ul>
-                    <li>Acceso a todas las imágenes</li>
-                    <li>Calidad excelente</li>
-                    <li>Acceso a todos los videos</li>
-                </ul>
-                <div class="form-group opt-price-cont">
-                    <h1 class="opt-price">$0.00</h1>
-                </div>
+                <h1 class="opt-price">${{plan.precio}}</h1>
             </div>
         </div>        
         <div class="button">
-            <button type="submit" class="btn btn-outline-primary confirm">Confirmar</button>
-            <button type="reset" class="btn btn-outline-danger cancel">Cancelar</button>
+            <button type="submit" (click)="saveSuscription()" class="btn btn-outline-primary confirm">Confirmar</button>
+            <button type="reset" (click)="resetSubscription()" class="btn btn-outline-danger cancel">Cancelar</button>
         </div>
     </div>
 </div>
