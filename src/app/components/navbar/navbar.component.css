@@ -1,5 +1,69 @@
 #nav-color{
-    background-color: #DEF2F1;
+    background-color: #1B264F;
     width: auto;
     height: 10vh;
 }
+/* Drop down button */
+.dropbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px;
+    font-size: 1vw;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .dropdown {
+    margin-left: 92vw;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    width: 10vw;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    font-size: 1em;
+    float:right;
+    font-family: "Ubuntu Condensed", sans-serif;
+    right: 0;
+}
+  
+  .dropdown-content a {
+    color: black;
+    padding: 1vw;
+    text-decoration: none;
+    display: block;
+    font-size: 1rem;
+  
+}
+  
+  .dropdown-content a:hover {background-color: #f1f1f1}
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  
+  .dropdown:hover .dropbtn {
+    background-color: #3e8e41;
+  }
+
+  .dot {
+    height: 50px;
+    width: 50px;
+    background-color: #2b7a78;
+    border-radius: 50%;
+    display: inline-block;
+    border-color:#adfffb;
+    border-style: solid;
+  }
+  #cs{
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+  }    

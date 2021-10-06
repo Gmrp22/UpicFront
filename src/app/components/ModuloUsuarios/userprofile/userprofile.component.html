@@ -1,66 +1,42 @@
 <div class="background">
-  <div class="form-container">
-    <div class="bf-main-background">
-      <div class=" bf-background">
-        <h1 class="title">Perfil de usuario</h1>
-
-        <div class="container">
-          <div class="row">
-            <div class="col-sm">
-              <form>
-                <div>
-                  <div class="image-container rounded-circle"></div>
-                  <div class="data-container">
-                    <label class="form-label data-label"
-                      >Imagen de perfil
-                    </label>
-
-                    <label class="form-label data-label">Cerrar sesion </label>
-                  </div>
-                </div>
-              </form>
-            </div>
-            <div class="col-sm">
-              <form>
-                <div>
-                  <div class="data-container">
-                    <label class="form-label data-label">Nombre </label>
-                    <label class="form-label data-label">Apellido </label>
-                    <label class="form-label data-label">Correo </label>
-                    <label class="form-label data-label"
-                      >Tipo de suscripción
-                    </label>
-                  </div>
-                </div>
-              </form>
-            </div>
-          </div>
+  <div class="bf-main-background">
+    <div class="data-container row">
+      <h1>Información basica</h1>
+      <div class="row data-container2">
+        <label class="col1 subtitles">Nombre:</label>
+        <label class="col2 data">{{ this.user?.nombres }} </label>
+      </div>
+      <div class="row data-container2">
+        <label class="col1 subtitles">Email:</label>
+        <label class="col2 data">{{ this.user?.email }} </label>
+      </div>
+      <div class="row data-container2">
+        <label class="col1 subtitles">Imagen Perfil:</label>
+        <div class="col2 data">
+          <img
+            class="image-contained rounded-circle"
+            src="{{ this.user?.img }}"
+          />
         </div>
-        <div class="container actions-div">
-          <div class="row">
-            <div class="col-sm">
-              <label class="form-label col1">
-                <a class="form-label" routerLink="/user/edit-user">
-                  Editar información
-                </a></label
-              >
-              <label class="form-label col1">
-                <a class="form-label" routerLink="/user/deactivate-user">
-                  Desactivar cuenta
-                </a>
-              </label>
-            </div>
+      </div>
+    </div>
 
-            <div class="col-sm">
-              <label class="form-label col2">
-                <a class="form-label" routerLink="user/password-reset">
-                  Reinicio de contraseña
-                </a>
-              </label>
-              <label class="form-label col2">Suscripciones </label>
-            </div>
-          </div>
-        </div>
+    <div class="container actions-div row">
+      <h1>Acciones</h1>
+      <div>
+        <label class="subtitles col1">
+          <a routerLink="/user/edit-user"> Editar información </a></label
+        >
+        <label class="subtitles col1">
+          <a routerLink="/user/deactivate-user"> Desactivar cuenta </a>
+        </label>
+      </div>
+
+      <div>
+        <label class="subtitles col2">
+          <a routerLink="user/password-reset"> Reinicio de contraseña </a>
+        </label>
+        <label class="subtitles col2"><a>Suscripciones </a></label>
       </div>
     </div>
   </div>
