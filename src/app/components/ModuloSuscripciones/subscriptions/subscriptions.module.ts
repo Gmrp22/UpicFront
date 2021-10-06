@@ -5,6 +5,7 @@ import { SubscriptionsRoutingModule } from './subscriptions-routing.module';
 import { NewSubscriptionComponent } from './new-subscription/new-subscription.component';
 import { CancelSubscriptionComponent } from './cancel-subscription/cancel-subscription.component';
 import { ChangeSubscriptionComponent } from './change-subscription/change-subscription.component';
+import { SuscripcionService } from 'src/app/services/moduloSuscripciones/suscripcion.service';
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import { ChangeSubscriptionComponent } from './change-subscription/change-subscr
   imports: [
     CommonModule,
     SubscriptionsRoutingModule
-  ]
+  ],
+  providers: [SuscripcionService ]
 })
 export class SubscriptionsModule { }

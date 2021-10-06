@@ -35,6 +35,7 @@
 
   .option:hover{
     border: 4px solid #3AAFA9;
+    cursor: pointer;
   }
   
   .option{
@@ -110,4 +111,8 @@
     border: 2px solid #2B7A78;
     border-radius: 15px;
     color: #FAFAFA;
+  }
+
+  .option::selection{
+    border: 4px solid #3AAFA9;
   }

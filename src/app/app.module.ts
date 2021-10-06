@@ -11,6 +11,7 @@ import { DownloadsModule } from './components/ModuloDescargas/downloads.module';
 import { PaymentModule } from './components/ModuloPagos/payment/payment.module';
 import { ReportComponent } from './components/ModuloReportes/report/report.component';
 import { UserModule } from './components/ModuloUsuarios/user.module';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +27,8 @@ import { UserModule } from './components/ModuloUsuarios/user.module';
     FlexLayoutModule,
     DownloadsModule,
     PaymentModule,
-    UserModule
+    UserModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

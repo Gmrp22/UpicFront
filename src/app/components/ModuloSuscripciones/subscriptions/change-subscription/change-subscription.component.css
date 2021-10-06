@@ -35,6 +35,7 @@
 
   .option:hover{
     border: 4px solid #3AAFA9;
+    cursor: pointer;
   }
   
   .option{
