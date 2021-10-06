@@ -16,9 +16,11 @@ import { DownloadsModule } from './components/ModuloDescargas/downloads.module';
 import { PaymentModule } from './components/ModuloPagos/payment/payment.module';
 import { ReportComponent } from './components/ModuloReportes/report/report.component';
 import { UserModule } from './components/ModuloUsuarios/user.module';
+
 import { environment } from 'src/environments/environment';
 import { HttpClientModule } from  '@angular/common/http';
 import { fireKey } from 'src/environments/firebaseKey';
+
 @NgModule({
   declarations: [
     AppComponent,

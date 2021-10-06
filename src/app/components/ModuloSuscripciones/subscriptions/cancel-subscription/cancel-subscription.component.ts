@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SuscripcionService } from 'src/app/services/moduloSuscripciones/suscripcion.service';
 
 @Component({
   selector: 'app-cancel-subscription',
@@ -7,9 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CancelSubscriptionComponent implements OnInit {
 
-  constructor() { }
+  userID?: number;
+  constructor( public suscriptionService: SuscripcionService) { }
 
   ngOnInit(): void {
+    this.userID = 4;
+  }
+
+  cancelSubscription(){
+    if(this.userID !== undefined){     
+      this.suscriptionService.unSubscribe(this.userID).subscribe(data =>{
+        console.log('success');      
+      }, err => {
+        console.log('error');
+      });
+    }
   }
 
 }

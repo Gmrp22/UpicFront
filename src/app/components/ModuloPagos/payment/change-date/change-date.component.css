@@ -1,8 +1,8 @@
 .background {
     background-color: #F5F5F5;
     position: absolute;
-    height: 100vh;
-    width: 100vw;
+    height: calc(100vh - 10vh);
+    width: calc(100vw - 1px);
 }
 
 .bf-background{
@@ -12,7 +12,7 @@
     margin: 20px 34px 34px 20px;
     padding: 20px;    
     width: calc(100vw - 3%);
-    height: calc(100vh - 7vh);
+    height: calc(100vh - 15vh);
 }
 
 .title {
@@ -23,7 +23,7 @@
     line-height: 36px;
     width: 800px;
     text-align: center;
-    padding-left: 28%;
+    padding-left: 29%;
     padding-top: 20px;
   }
 
@@ -60,7 +60,7 @@
 
   .input{
     text-align: center;    
-    margin-left: 30%;
+    margin-left: 32%;
     padding: 5px;
     width: 623px;    
   }
@@ -74,8 +74,9 @@
   }
 
   .button{
-      margin-top: 60px;
+      margin-top: 40px;
       padding: 20px;
+      margin-left: 43px;
   }
 
   button{
@@ -102,14 +103,11 @@
       padding-top: 20px;
   }
 
-  .small{
-      margin-top: -12px;
-  }
 
   .warn{
     color: #17252A;
     font-family: Roboto Condensed;
-    line-height: 36px;
+    line-height: 30px;
     width: 459px;
     text-align: justify;
     font-size: 21px;
