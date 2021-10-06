@@ -32,6 +32,7 @@ export class AuthService {
           this.logged = true;
           console.log('Loggeado', this.logged);
           subscriber.next(true);
+          user.getIdToken().then(a => console.log(a))
           let userInfo = {
             nombres: user?.displayName + '',
             email: user?.email + '',
@@ -63,13 +64,21 @@ export class AuthService {
           let newUser = {
             nombres: value.user?.displayName + '',
             correo: value.user?.email + '',
-            roles: [1],
+            roles: [2],
           };
-          this.userService.createUser(newUser).subscribe((res) => {
-            console.log('HTTP response', res);
-            this.notificationService.success2('Bienvenido a Upic');
-          });
-          this.router.navigateByUrl('download/all-resource');
+          this.userService.createUser(newUser).subscribe(
+            (res) => {
+              console.log('HTTP response', res);
+              this.notificationService.success2('Bienvenido a Upic');
+              this.router.navigateByUrl('download/all-resource');
+            },
+
+            (err) => {
+              console.log('HTTP response', err);
+              value.user?.delete();
+            }
+          );
+       
         } else {
           this.router.navigateByUrl('download/all-resource');
         }
@@ -108,16 +117,21 @@ export class AuthService {
           let newUser = {
             nombres: user.get('name')?.value,
             correo: email,
-            roles: [1],
+            roles: [2],
           };
           value.user?.updateProfile({ displayName: newUser.nombres });
 
-          this.userService.createUser(newUser).subscribe((res) => {
-            console.log('HTTP response', res);
-            this.notificationService.success2('Bienvenido a Upic');
-          });
-
-          this.router.navigateByUrl('download/all-resource');
+          this.userService.createUser(newUser).subscribe(
+            (res) => {
+              console.log('HTTP response', res);
+              this.notificationService.success2('Bienvenido a Upic');
+              this.router.navigateByUrl('download/all-resource');
+            },
+            (err) => {
+              console.log('HTTP response', err);
+              value.user?.delete();
+            }
+          );
         }
       })
       .catch((err) => {
@@ -149,7 +163,7 @@ export class AuthService {
       .then((user) => {
         let email = user?.email + '';
         //Delete user from DB
-        this.notificationService.exitLoading(1000);
+        this.notificationService.exitLoading(1500);
         this.userService.deleteUser(email).subscribe((res) => {
           this.notificationService.success('Cuenta desactivada');
           user?.delete();
@@ -160,7 +174,7 @@ export class AuthService {
         console.log('Something went wrong: ', error);
       });
   }
-  
+
   /**
    *Error message
    */

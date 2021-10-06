@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/moduloUsuarios/auth.service';
 import { FormValidatorService } from 'src/app/services/moduloUsuarios/form-validator.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-createuser',
   templateUrl: './createuser.component.html',
@@ -21,7 +22,8 @@ export class CreateuserComponent {
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
-    private customValidator: FormValidatorService
+    private customValidator: FormValidatorService,
+    private route: Router
   ) {
     this.signupForm = this.formBuilder.group(
       {
@@ -50,5 +52,8 @@ export class CreateuserComponent {
 
   get registerFormControl() {
     return this.signupForm.controls;
+  }
+  login(){
+    this.route.navigateByUrl('user/login');
   }
 }

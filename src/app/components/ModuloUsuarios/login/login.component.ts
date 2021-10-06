@@ -25,6 +25,7 @@ export class LoginComponent {
     let pass = this.loginForm.get('password')?.value;
     let email = this.loginForm.get('email')?.value;
     this.authService.loginEmail(email, pass);
+    this.loginForm.reset()
   }
   /**
   Calls login with google method

@@ -8,7 +8,7 @@ export class NotificationService {
   constructor() { }
 
   success(message: string){
-    Notify.success(message, { timeout: 1000 });
+    Notify.success(message, { timeout: 1500 });
   }
   success2(message: string){
    Report.success( message, 
@@ -21,7 +21,7 @@ export class NotificationService {
       'Click' ); 
   }
   error(message: string){
-    Notify.failure(message, { timeout: 1000 });
+    Notify.failure(message, { timeout: 1500 });
   }
   loading(){
     Block.hourglass('body');

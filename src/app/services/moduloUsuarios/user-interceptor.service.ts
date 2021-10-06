@@ -21,6 +21,12 @@ export class UserInterceptorService implements HttpInterceptor {
   ): Observable<HttpEvent<any>> {
     return next.handle(request).pipe(
       catchError((error: HttpErrorResponse) => {
+        if(request.method == 'POST'){
+          this.notificationService.fail('No es posible crear la cuenta');
+        }
+        if(request.method == 'DELETE'){
+          this.notificationService.fail('No es posible desactivar la cuenta');
+        }
         let errorMessage = '';
         if (error.error instanceof ErrorEvent) {
           // client-side error
@@ -31,8 +37,7 @@ export class UserInterceptorService implements HttpInterceptor {
           errorMessage = error.message;
           console.log('HTTP Error', errorMessage);
         }
-        this.notificationService.fail('Cuenta no creada');
-        window.alert(errorMessage);
+        
         return throwError(errorMessage);
       })
     );

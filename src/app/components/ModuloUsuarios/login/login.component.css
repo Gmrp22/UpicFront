@@ -1,14 +1,14 @@
 /* Basic component Styles */
 
 #google {
-  width: 15vw;
+  width: 3vw;
+  height: 3vw;
   font-size: 1.1vw;
+  min-width: 37px;
+  border:none;
+  background-color: #fff;
 }
-#google::placeholder {
-  font-family: "Roboto Condensed", sans-serif;
-  line-height: 42px;
-  text-align: center;
-}
+
 
 /* Title */
 .title {
@@ -18,30 +18,12 @@
   line-height: 58px;
   font-weight: bold;
 }
-/* Responsive */
-@media screen and (max-width: 969px) {
-  .col-sm {
-    width: 50%;
-  }
-  .col-2 {
-    width: 0%;
-  }
-  #button-cancel {
-    display: block;
-    margin-top: 1vh;
-    width: 100%;
-  }
-  #button-accept {
-    margin-top: 1vh;
-    display: block;
-  }
-}
 
 /* General */
 .background {
   color: #000;
   overflow-x: hidden;
-  height: auto;
+  height:auto;
   background-color: #2f4b56;
 }
 /* Cards */
@@ -59,7 +41,7 @@
   width: 50%;
   background-image: url("./image/pe.jpg");
   background-repeat: no-repeat;
-  background-size: 120%;
+  background-size: cover;
 }
 
 /* Create account */
@@ -88,7 +70,7 @@
 
 /* Form login components styles */
 .login-form {
-  margin-top: 10vh;
+  margin-top: 5vh;
 }
 .form-control {
   background-color: #def2f1;
@@ -160,8 +142,8 @@ button:focus {
 }
 /* Extra */
 #logo {
-  width: 7vw;
-  height: 6vh;
+  width: 77px;
+  height: 66px;
   fill: #2e5d73;
 }
 
@@ -169,7 +151,7 @@ button:focus {
   padding-left: 15px;
   margin-bottom: 30px;
 }
-.text-white{
+.text-white {
   font-size: 1.6vh;
 }
 a {
@@ -191,6 +173,7 @@ a:hover {
 
   .card2 {
     width: 100%;
+    padding: 70px 50px 90px 50px;
   }
 
   .right {
@@ -211,5 +194,14 @@ a:hover {
   .right {
     margin-top: 50px;
     margin-bottom: 50px;
+  }
+  .py-5{
+       padding-right: 0.5rem !important; 
+        padding-left: 0.5rem !important;
+
+  }
+  .px-4{
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
   }
 }
