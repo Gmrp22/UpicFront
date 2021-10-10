@@ -32,7 +32,7 @@ export class AuthService {
           this.logged = true;
           console.log('Loggeado', this.logged);
           subscriber.next(true);
-          user.getIdToken().then(a => console.log(a))
+          // user.getIdToken().then(a => console.log(a))
           let userInfo = {
             nombres: user?.displayName + '',
             email: user?.email + '',
@@ -64,7 +64,7 @@ export class AuthService {
           let newUser = {
             nombres: value.user?.displayName + '',
             correo: value.user?.email + '',
-            roles: [2],
+            roles: 1,
           };
           this.userService.createUser(newUser).subscribe(
             (res) => {
@@ -117,7 +117,7 @@ export class AuthService {
           let newUser = {
             nombres: user.get('name')?.value,
             correo: email,
-            roles: [2],
+            roles: 1,
           };
           value.user?.updateProfile({ displayName: newUser.nombres });
 
