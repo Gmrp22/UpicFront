@@ -7,21 +7,25 @@ import { RateResourceComponent } from './rate-resource/rate-resource.component';
 import { AllresourcesComponent } from './allresources/allresources.component';
 import { MyresourcesComponent } from './myresources/myresources.component';
 import { SavedresourcesComponent } from './savedresources/savedresources.component';
+import { AngularFireAuthGuard } from '@angular/fire/compat/auth-guard';
 const routes: Routes = [
   {
     path: 'download',
     children: [ {
       path: 'upload-resource',
-      component: UploadResourceComponent
+      component: UploadResourceComponent,
+      canActivate: [AngularFireAuthGuard],
     },
     {                   
       path: 'info-resource',
-      component: ResourceComponent
+      component: ResourceComponent,
+      canActivate: [AngularFireAuthGuard],
 
     },
     {
       path: 'rate-resource',
-      component: RateResourceComponent
+      component: RateResourceComponent,
+      canActivate: [AngularFireAuthGuard],
 
     },
     {
@@ -31,12 +35,14 @@ const routes: Routes = [
     },
     {
       path: 'my-resource',
-      component: MyresourcesComponent
+      component: MyresourcesComponent,
+      canActivate: [AngularFireAuthGuard],
 
     },
     {
       path: 'saved-resource',
-      component: SavedresourcesComponent
+      component: SavedresourcesComponent,
+      canActivate: [AngularFireAuthGuard],
 
     }
  

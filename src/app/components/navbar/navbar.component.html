@@ -5,7 +5,13 @@
         <li><a>Inicio</a></li>
         <li><a routerLink="/download/all-resource"> Descubre</a></li>
         <li><a routerLink="/download/saved-resource">Tus descargas</a></li>
-        <li><a routerLink="/download/my-resource">Tus recursos</a></li>
+        <li>
+          <a routerLink="/download/my-resource">Tus recursos</a>
+          <div class="dropdown-content">
+            <a routerLink="/download/upload-resource">Subir un recurso</a>
+            <a routerLink="/download/my-resource">Mis recursos</a>
+          </div>
+        </li>
         <li><a>Contacto</a></li>
         <li>
           <div class="dropdown">
@@ -36,6 +42,18 @@
       </ul>
     </div>
 
-    <ng-template #notUser> </ng-template>
+    <!-- Not logged -->
+    <ng-template #notUser>
+      <ul>
+        <li><a>Inicio</a></li>
+        <li><a routerLink="/download/all-resource"> Descubre</a></li>
+        <li><a routerLink="../../join">Tus descargas</a></li>
+        <li>
+          <a routerLink="../../join">Tus recursos</a>
+        </li>
+        <li><a routerLink="">Contacto</a></li>
+        <li></li>
+      </ul>
+    </ng-template>
   </div>
 </nav>

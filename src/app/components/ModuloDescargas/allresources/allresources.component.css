@@ -66,6 +66,7 @@ padding: 20% 0% 0% var(--plan-padding);
 .col-sm1 {
   padding: 0% 1% 0% 1%;
   width: 20%;
+  margin-top: 2%;
 }
 .col1{
   width: 50%;

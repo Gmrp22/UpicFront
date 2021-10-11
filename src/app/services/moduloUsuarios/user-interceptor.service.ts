@@ -19,6 +19,7 @@ export class UserInterceptorService implements HttpInterceptor {
     request: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
+
     return next.handle(request).pipe(
       catchError((error: HttpErrorResponse) => {
         if(request.method == 'POST'){
@@ -38,9 +39,10 @@ export class UserInterceptorService implements HttpInterceptor {
           console.log('HTTP Error', errorMessage);
         }
         
-        return throwError(errorMessage);
+        return throwError(errorMessage)
       })
     );
+   
   }
   private getServerErrorMessage(error: HttpErrorResponse): string {
     switch (error.status) {

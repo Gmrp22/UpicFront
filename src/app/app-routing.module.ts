@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AngularFireAuthGuard } from '@angular/fire/compat/auth-guard';
-
+import { JoinComponent } from './components/Extras/join/join.component';
 const routes: Routes = [
   {
     path: '',
@@ -20,7 +20,7 @@ const routes: Routes = [
           import(
             './components/ModuloSuscripciones/subscriptions/subscriptions.module'
           ).then((mod) => mod.SubscriptionsModule),
-          canActivate: [AngularFireAuthGuard],
+        canActivate: [AngularFireAuthGuard],
       },
     ],
   },
@@ -33,7 +33,6 @@ const routes: Routes = [
           import('./components/ModuloDescargas/downloads.module').then(
             (mod) => mod.DownloadsModule
           ),
-          canActivate: [AngularFireAuthGuard],
       },
     ],
   },
@@ -48,6 +47,11 @@ const routes: Routes = [
           ),
       },
     ],
+  },
+  {
+    path: 'join',
+    component: JoinComponent,
+
   },
 ];
 

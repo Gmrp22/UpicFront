@@ -13,16 +13,20 @@ export class ResourceService {
     .set('content-type', 'application/json')
     .set('Access-Control-Allow-Origin', '*')
     .set('Access-Control-Allow-Methods', '*');
-  constructor(
-    private http: HttpClient,
-    private notificationService: NotificationService
-  ) {}
+  constructor(private http: HttpClient) {}
 
   /**
-   *Get all resources
+   *Get all resources if its logged
    */
-  getAllResources() {
-    const path = '';
+  getAllResources(logged: boolean) {
+    const path = `${baseUrl}${'recursos/'}`;
+    return this.http.get<Resource[]>(path);
+  }
+  /**
+   *Get resources from a plan
+   */
+  getPlanResources(plan: number) {
+    const path = `${baseUrl}${'recurso-plan/'}${plan}`;
     return this.http.get<Resource[]>(path);
   }
   /**
@@ -40,4 +44,7 @@ export class ResourceService {
     const path = `${url}${email}`;
     return this.http.delete<Resource>(path, { headers: this.headers });
   }
+
+
+  
 }

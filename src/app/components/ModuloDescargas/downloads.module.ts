@@ -7,6 +7,8 @@ import { RateResourceComponent } from './rate-resource/rate-resource.component';
 import { AllresourcesComponent } from './allresources/allresources.component';
 import { MyresourcesComponent } from './myresources/myresources.component';
 import { SavedresourcesComponent } from './savedresources/savedresources.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ResourceInterceptorService } from 'src/app/services/moduloDescargas/resource-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -20,6 +22,13 @@ import { SavedresourcesComponent } from './savedresources/savedresources.compone
   imports: [
     CommonModule,
     DownloadRoutingModule,
+  ],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ResourceInterceptorService,
+      multi: true
+    }
   ]
 })
 export class DownloadsModule { }

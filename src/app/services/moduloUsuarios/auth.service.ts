@@ -45,7 +45,7 @@ export class AuthService {
           this.logged = false;
           subscriber.next(false);
           console.log('NO Loggeado', this.logged);
-          this.router.navigateByUrl('user/login');
+          // this.router.navigateByUrl('user/login');
         }
       });
     });
@@ -152,6 +152,7 @@ export class AuthService {
         this.notificationService.error('No se pudo cerrar sesión');
       });
     }, 1000);
+    this.router.navigateByUrl('user/login');
   }
 
   /**
