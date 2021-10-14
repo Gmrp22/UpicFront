@@ -18,6 +18,7 @@ export class ResourceInterceptorService {
     request: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
+    if((request.url== 'http://34.195.25.223/recurso/') || (request.url== 'http://34.195.25.223/recursos/') ||(request.url== 'http://34.195.25.223/recurso-plan/')){
     return next.handle(request).pipe(
       catchError((error: HttpErrorResponse) => {
         if (request.method == 'POST') {
@@ -38,6 +39,12 @@ export class ResourceInterceptorService {
         return throwError(errorMessage);
       })
     );
+  
+  
   }
 
+  else{
+    return next.handle(request)
+  }
+  }
 }

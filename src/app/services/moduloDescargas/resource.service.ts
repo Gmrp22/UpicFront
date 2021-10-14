@@ -12,7 +12,12 @@ export class ResourceService {
   headers = new HttpHeaders()
     .set('content-type', 'application/json')
     .set('Access-Control-Allow-Origin', '*')
-    .set('Access-Control-Allow-Methods', '*');
+    .set('Access-Control-Allow-Methods', '*')
+    .set(
+      'Access-Control-Allow-Headers',
+      'Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With, Origin, X-Requested-With, Content-Type, Accept'
+    );
+
   constructor(private http: HttpClient) {}
 
   /**
@@ -44,7 +49,4 @@ export class ResourceService {
     const path = `${url}${email}`;
     return this.http.delete<Resource>(path, { headers: this.headers });
   }
-
-
-  
 }

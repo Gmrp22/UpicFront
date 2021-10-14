@@ -38,6 +38,15 @@
   font-family: 'Roboto Condensed', sans-serif;
   font-weight: bold;
 }
+select{
+  text-align: center;
+}
+.div-image{
+  width: 20rem;
+  height: 20rem;
+  margin:5vh 1vw 2vh 1.8vw;
+}
+
 .form-control::placeholder {
   color: #2b7a78;
   font-family: 'Roboto Condensed', sans-serif;

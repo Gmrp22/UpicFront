@@ -76,6 +76,7 @@ export class AuthService {
             (err) => {
               console.log('HTTP response', err);
               value.user?.delete();
+              this.router.navigateByUrl('download/all-resource');
             }
           );
        
@@ -168,7 +169,8 @@ export class AuthService {
         this.userService.deleteUser(email).subscribe((res) => {
           this.notificationService.success('Cuenta desactivada');
           user?.delete();
-          this.logout();
+          // this.logout();
+          this.router.navigateByUrl('download/all-resource');
         });
       })
       .catch((error) => {

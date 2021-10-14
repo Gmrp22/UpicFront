@@ -19,7 +19,7 @@ export class UserInterceptorService implements HttpInterceptor {
     request: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-
+    if((request.url== 'http://34.195.25.223/usuarios/')||(request.url== 'http://34.195.25.223/delete-user/')){
     return next.handle(request).pipe(
       catchError((error: HttpErrorResponse) => {
         if(request.method == 'POST'){
@@ -42,7 +42,10 @@ export class UserInterceptorService implements HttpInterceptor {
         return throwError(errorMessage)
       })
     );
-   
+    }
+    else{
+      return next.handle(request)
+    }
   }
   private getServerErrorMessage(error: HttpErrorResponse): string {
     switch (error.status) {

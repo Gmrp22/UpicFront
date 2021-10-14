@@ -9,7 +9,7 @@ import { MyresourcesComponent } from './myresources/myresources.component';
 import { SavedresourcesComponent } from './savedresources/savedresources.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ResourceInterceptorService } from 'src/app/services/moduloDescargas/resource-interceptor.service';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     UploadResourceComponent,
@@ -22,6 +22,8 @@ import { ResourceInterceptorService } from 'src/app/services/moduloDescargas/res
   imports: [
     CommonModule,
     DownloadRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     {
