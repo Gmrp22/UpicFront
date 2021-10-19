@@ -3,6 +3,9 @@ import { Router } from '@angular/router';
 import { PlanItem } from 'src/app/models/planItem';
 import { SubscriptionItem } from 'src/app/models/subscriptionItem';
 import { SuscripcionService } from 'src/app/services/moduloSuscripciones/suscripcion.service';
+import { Subscription } from 'rxjs';
+import { AuthService } from 'src/app/services/moduloUsuarios/auth.service';
+import { UserInfo } from 'src/app/services/moduloUsuarios/interface/userInfo';
 
 @Component({
   selector: 'app-change-subscription',
@@ -14,7 +17,14 @@ export class ChangeSubscriptionComponent implements OnInit {
   plans: PlanItem[] = [];  
   planID: number = 0;
   subscription: SubscriptionItem = { planId: 0, usuarioId: 0 };
-  constructor(public suscriptionService: SuscripcionService, private router: Router ) { }
+  public logedIn: Subscription;
+  public user: UserInfo | undefined;
+  susc: any;
+  constructor(public suscriptionService: SuscripcionService, private router: Router, private authService: AuthService ) {
+    this.logedIn = authService.signedIn.subscribe((user) => {
+      this.user = user;
+    });
+   }
 
   ngOnInit(): void {    
     this.suscriptionService.readDataPlans().subscribe(data => {
@@ -24,13 +34,17 @@ export class ChangeSubscriptionComponent implements OnInit {
       });  
     });
     this.suscriptionService.getPlans();
+    this.suscriptionService.getSubscription(this.user?.email! ? this.user?.email : '').subscribe(data => {
+      this.susc = data;
+      console.log(this.susc);    
+    })
   }
 
   suscribe(planID: number){    
     this.planID = planID;
     this.subscription = {
       planId: planID,
-      usuarioId: 1
+      usuarioId: 2
     }
   }
 

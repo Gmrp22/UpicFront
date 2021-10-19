@@ -25,6 +25,11 @@
     padding-left: 29%;
     padding-top: 20px;
   }
+
+  .error {
+    color: #F5676A;
+    text-align: left;
+  }
   
   .form{
     text-align: center;
@@ -33,13 +38,20 @@
     margin: 20px;
   }
 
-  input{
+  .card, input{
     height: 48px;
     background-color: #DEF2F1;
     border: 1px solid #8492A6;
     border-radius: 15px;
     opacity: 0.56;
     font-size: 19px;
+  }
+
+  .stripe{
+    margin-left: 340px;
+    margin-right: 320px;
+    margin-top: 50px;
+    margin-bottom: 25px;
   }
 
   ::placeholder{
@@ -85,6 +97,7 @@
   }
 
   .warning{
-      padding-top: 20px;
+      padding-top: 40px;
+      padding-bottom: 40px;
       font-size: 15px;
   }

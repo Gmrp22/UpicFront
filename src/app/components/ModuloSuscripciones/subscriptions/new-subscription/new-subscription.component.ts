@@ -3,6 +3,9 @@ import { Router } from '@angular/router';
 import { PlanItem } from 'src/app/models/planItem';
 import { SubscriptionItem } from 'src/app/models/subscriptionItem';
 import { SuscripcionService } from 'src/app/services/moduloSuscripciones/suscripcion.service';
+import { Subscription } from 'rxjs';
+import { AuthService } from 'src/app/services/moduloUsuarios/auth.service';
+import { UserInfo } from 'src/app/services/moduloUsuarios/interface/userInfo';
 
 @Component({
   selector: 'app-new-subscription',
@@ -14,9 +17,15 @@ export class NewSubscriptionComponent implements OnInit {
   plans: PlanItem[] = [];
   planID: number = 0;
   subscription: SubscriptionItem = { planId: 0, usuarioId: 0 };
-  constructor( public suscriptionService: SuscripcionService, private router: Router ) { }
+  public user: UserInfo | undefined;
+  public logedIn: Subscription;
+  constructor( public suscriptionService: SuscripcionService, private router: Router, private authService: AuthService ) {
+    this.logedIn = this.authService.signedIn.subscribe((user) => {
+      this.user = user;
+    });
+   }
 
-  ngOnInit(): void {
+  ngOnInit(): void {    
     this.suscriptionService.readDataPlans().subscribe(data => {
       this.plans = data;
       this.plans.forEach(plan => {      
