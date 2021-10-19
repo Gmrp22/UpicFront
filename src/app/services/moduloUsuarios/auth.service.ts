@@ -7,6 +7,7 @@ import { UserInfo } from './interface/userInfo';
 import { UserService } from './user.service';
 import { FormGroup } from '@angular/forms';
 import { NotificationService } from '../notifications/notification.service';
+import { subscribeOn } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -15,6 +16,7 @@ export class AuthService {
   public signedIn: Observable<any>;
   public logged: Boolean = false;
   public user: UserInfo | undefined;
+  public userToken :Observable<any>;
   /**
    *Initializes and creates an observable that notifies
    *every time the user's authentication state changes
@@ -32,7 +34,7 @@ export class AuthService {
           this.logged = true;
           console.log('Loggeado', this.logged);
           subscriber.next(true);
-          user.getIdToken().then(a => console.log(a))
+          // user.getIdToken().then(a => console.log(a))
           let userInfo = {
             nombres: user?.displayName + '',
             email: user?.email + '',
@@ -45,11 +47,26 @@ export class AuthService {
           this.logged = false;
           subscriber.next(false);
           console.log('NO Loggeado', this.logged);
-          this.router.navigateByUrl('user/login');
+          // this.router.navigateByUrl('user/login');
         }
       });
     });
-  }
+    this.userToken = new Observable((subscriber) =>{
+      this.auth.onAuthStateChanged((user) => {
+        if (user) {
+          //send token
+          let token = ""
+         user.getIdToken().then(a => {token = a; subscriber.next(token)})
+        } else {
+          subscriber.next(false);
+         
+        }
+    })
+  })
+
+}
+
+
   /**
    *Login with google account,
    *if its a new user it will also send a post request of  the new user to the API
@@ -64,7 +81,7 @@ export class AuthService {
           let newUser = {
             nombres: value.user?.displayName + '',
             correo: value.user?.email + '',
-            roles: [2],
+            roles: 1,
           };
           this.userService.createUser(newUser).subscribe(
             (res) => {
@@ -76,6 +93,7 @@ export class AuthService {
             (err) => {
               console.log('HTTP response', err);
               value.user?.delete();
+              this.router.navigateByUrl('download/all-resource');
             }
           );
        
@@ -117,7 +135,7 @@ export class AuthService {
           let newUser = {
             nombres: user.get('name')?.value,
             correo: email,
-            roles: [2],
+            roles: 1,
           };
           value.user?.updateProfile({ displayName: newUser.nombres });
 
@@ -152,6 +170,7 @@ export class AuthService {
         this.notificationService.error('No se pudo cerrar sesión');
       });
     }, 1000);
+    this.router.navigateByUrl('user/login');
   }
 
   /**
@@ -167,7 +186,8 @@ export class AuthService {
         this.userService.deleteUser(email).subscribe((res) => {
           this.notificationService.success('Cuenta desactivada');
           user?.delete();
-          this.logout();
+          // this.logout();
+          this.router.navigateByUrl('download/all-resource');
         });
       })
       .catch((error) => {

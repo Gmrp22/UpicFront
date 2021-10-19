@@ -20,6 +20,7 @@ import { UserModule } from './components/ModuloUsuarios/user.module';
 import { environment } from 'src/environments/environment';
 import { HttpClientModule } from  '@angular/common/http';
 import { fireKey } from 'src/environments/firebaseKey';
+import { JoinComponent } from './components/Extras/join/join.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { fireKey } from 'src/environments/firebaseKey';
     NavbarComponent,
     SidebarComponent,
     ReportComponent,
+    JoinComponent,
 
   ],
   imports: [
