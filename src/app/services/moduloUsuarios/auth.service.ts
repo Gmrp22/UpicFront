@@ -7,6 +7,7 @@ import { UserInfo } from './interface/userInfo';
 import { UserService } from './user.service';
 import { FormGroup } from '@angular/forms';
 import { NotificationService } from '../notifications/notification.service';
+import { subscribeOn } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -15,6 +16,7 @@ export class AuthService {
   public signedIn: Observable<any>;
   public logged: Boolean = false;
   public user: UserInfo | undefined;
+  public userToken :Observable<any>;
   /**
    *Initializes and creates an observable that notifies
    *every time the user's authentication state changes
@@ -49,7 +51,22 @@ export class AuthService {
         }
       });
     });
-  }
+    this.userToken = new Observable((subscriber) =>{
+      this.auth.onAuthStateChanged((user) => {
+        if (user) {
+          //send token
+          let token = ""
+         user.getIdToken().then(a => {token = a; subscriber.next(token)})
+        } else {
+          subscriber.next(false);
+         
+        }
+    })
+  })
+
+}
+
+
   /**
    *Login with google account,
    *if its a new user it will also send a post request of  the new user to the API

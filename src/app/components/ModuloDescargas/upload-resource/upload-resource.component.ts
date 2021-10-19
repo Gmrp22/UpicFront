@@ -23,7 +23,8 @@ export class UploadResourceComponent implements OnInit {
   image: any;
   constructor(
     private formBuilder: FormBuilder,
-    private uploadService: UploadService
+    private uploadService: UploadService,
+
   ) {
     this.resourceForm = this.formBuilder.group({
       name: ['', Validators.required],

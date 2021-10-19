@@ -11,12 +11,7 @@ export class ResourceService {
   private url = `${baseUrl}${'recurso/'}`;
   headers = new HttpHeaders()
     .set('content-type', 'application/json')
-    .set('Access-Control-Allow-Origin', '*')
-    .set('Access-Control-Allow-Methods', '*')
-    .set(
-      'Access-Control-Allow-Headers',
-      'Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With, Origin, X-Requested-With, Content-Type, Accept'
-    );
+    .set('Access-Control-Allow-Origin', '*');
 
   constructor(private http: HttpClient) {}
 
