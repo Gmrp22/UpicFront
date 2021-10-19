@@ -36,8 +36,23 @@ export class SuscripcionService {
     }
   }
 
+  getPlan(id: number): Observable<any> {
+    // return this.httpc.get('/assets/mockups/specificget.json', { headers: myheaders });
+    return this.httpc.get(this.ruta +'/planes/' + id);
+  }
+
   readDataPlans(): Observable<PlanItem[]> {
     return this.plansSubject.asObservable();
+  }
+
+  getSubscription(email: String): Observable<any>{ 
+    const myheaders = new HttpHeaders({
+      'content-type': 'application/json'
+    })
+    .set('content-type', 'application/json')
+    .set('Access-Control-Allow-Origin', '*')
+    .set('Access-Control-Allow-Methods', '*');
+    return this.httpc.get(this.ruta + '/suscripcion?email=' + email, { headers: myheaders })
   }
 
   subscribe(s: SubscriptionItem) {
@@ -52,7 +67,7 @@ export class SuscripcionService {
     const jsonParms = JSON.stringify(s);    
     const myheaders = new HttpHeaders({
       'content-type': 'application/json'
-    });
+    })
     return this.httpc.put(this.ruta + '/suscripcion/' + s.usuarioId + '/', jsonParms, { headers: myheaders });
   }
 
