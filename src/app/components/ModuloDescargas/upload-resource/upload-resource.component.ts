@@ -42,9 +42,7 @@ export class UploadResourceComponent implements OnInit {
     this.submitted = true;
 
     if (this.resourceForm.valid) {
-      // this.resourceForm.setValue({
-      //   resource: this.image,
-      // });
+ 
       this.uploadService.uploadResource(this.resourceForm, this.image);
     } else {
       console.log('--');
@@ -64,8 +62,10 @@ export class UploadResourceComponent implements OnInit {
     reader.onload = (_event) => {
       this.msg = '';
       this.url = reader.result;
-      this.image = 'data:image/jpeg;base64,' + btoa(this.url);
-      console.log(this.image);
+      this.image = this.url.replace("data:", "").replace(/^.+,/, "");
     };
   }
+
+
+
 }

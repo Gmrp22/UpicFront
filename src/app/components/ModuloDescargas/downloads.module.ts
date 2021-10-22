@@ -9,6 +9,7 @@ import { MyresourcesComponent } from './myresources/myresources.component';
 import { SavedresourcesComponent } from './savedresources/savedresources.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ResourceInterceptorService } from 'src/app/services/moduloDescargas/resource-interceptor.service';
+import { BiblioInterceptorService } from 'src/app/services/moduloDescargas/biblio/biblio-interceptor.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
@@ -23,14 +24,19 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     DownloadRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: ResourceInterceptorService,
-      multi: true
-    }
-  ]
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: BiblioInterceptorService,
+      multi: true,
+    },
+  ],
 })
-export class DownloadsModule { }
+export class DownloadsModule {}

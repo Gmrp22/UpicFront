@@ -1,7 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { baseUrl } from 'src/environments/api';
-import { NotificationService } from '../notifications/notification.service';
 import { Resource } from './interface/resource';
 
 @Injectable({
@@ -36,12 +35,5 @@ export class ResourceService {
     const path = `${this.url}`;
     return this.http.post(path, resource, { headers: this.headers });
   }
-  /**
-   *Download resource
-   */
-  downloadResource(email: String) {
-    let url = `${baseUrl}${'delete-user/'}`;
-    const path = `${url}${email}`;
-    return this.http.delete<Resource>(path, { headers: this.headers });
-  }
+ 
 }

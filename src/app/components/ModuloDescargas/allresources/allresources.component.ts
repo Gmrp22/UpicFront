@@ -3,6 +3,7 @@ import { Resource } from 'src/app/services/moduloDescargas/interface/resource';
 import { ResourceService } from 'src/app/services/moduloDescargas/resource.service';
 import { DownloadService } from 'src/app/services/moduloDescargas/download.service';
 import { AuthService } from 'src/app/services/moduloUsuarios/auth.service';
+import { BiblioService } from 'src/app/services/moduloDescargas/biblio/biblio.service';
 import { Subscription } from 'rxjs';
 import { DomSanitizer } from '@angular/platform-browser';
 @Component({
@@ -19,7 +20,7 @@ export class AllresourcesComponent implements OnInit {
     private resourceService: ResourceService,
     auth: AuthService,
     private downloadService: DownloadService,
-    private _sanitizer: DomSanitizer
+    private _sanitizer: DomSanitizer,
   ) {
     this.logedIn = auth.signedIn.subscribe((val) => {
       this.logged = val ? true : false;
@@ -53,12 +54,17 @@ export class AllresourcesComponent implements OnInit {
       });
     }
   }
-  imagePath: any;
+    /**
+   *Decodes imgaes
+   */
   decode(e: any) {
     let objectURL = 'data:image/jpeg;base64,' + e;
     let thumbnail = this._sanitizer.bypassSecurityTrustUrl(objectURL);
-
-    
     return thumbnail;
   }
+
+  save(resource: any){
+    this.downloadService.addBiblioResource(resource.id)
+  }
+
 }

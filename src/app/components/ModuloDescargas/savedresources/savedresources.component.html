@@ -1,56 +1,21 @@
-<div class="background">
-    <div class="form-container">
-      <div class="bf-main-background">
-      <div class="col-sm bf-background">
-        <h1 class="title">Recursos descargados</h1>
-        <form>
-          <div class="form-group">
-
-            <table class="table table-striped">
-                <thead class="table-head">
-                  <tr class="table-head">
-                    <th scope="col">Codigo</th>
-                    <th scope="col">Nombre de recurso</th>
-                    <th scope="col">Tipo</th>
-                    <th scope="col">Url</th>
-                    <th scope="col">Estado</th>
-                    <th scope="col">Calificación</th>
-                  </tr>
-                </thead>
-                <tbody class="table-body">
-                  <tr>
-                    <td>prueba</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                  </tr>
-                  <tr>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                  </tr>
-                  <tr>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                  </tr>
-                </tbody>
-              </table>
+<div class="main-container">
+  <div class="resources">
+    <div class="row">
+      <div *ngFor="let resource of data" class="col-sm1">
+        <div class="image-container" >
               
-
-
+          <img alt="Error"  />
+        </div>
+        <div class="data-container row">
+          <div class="resource-info col1">
+            <label class="resource-label"></label>
+            <label class="resource-label"></label>
           </div>
-        </form>
-
+          <div class="resource-plan col1">
+            <label class="plan-label"></label>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-  
+</div>
