@@ -7,7 +7,7 @@ import { Biblio } from '../interface/biblio';
   providedIn: 'root',
 })
 export class BiblioService {
-  private url = `${baseUrl}${'add-recurso-biblio/'}`;
+  private url = `${baseUrl}${'recurso-biblio/'}`;
   token: any;
   headers = new HttpHeaders();
 
@@ -32,7 +32,18 @@ export class BiblioService {
   getBiblioResource() {
     let path = `${baseUrl}${'biblioteca/'}`;
     var header =  new HttpHeaders({'Authorization' : 'Bearer ' + this.token});
-    return this.http.get<Biblio[]>(path, {headers:header});
+    return this.http.get<Biblio>(path, {headers:header});
+  
+}
+
+
+  /**
+  Gets the biblio resources by user
+   */
+  getMyUploadResource() {
+    let path = `${baseUrl}${'mis-recursos/'}`;
+    var header =  new HttpHeaders({'Authorization' : 'Bearer ' + this.token});
+    return this.http.get<Biblio>(path, {headers:header});
   
 }
 

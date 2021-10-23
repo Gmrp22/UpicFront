@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Resource } from './interface/resource';
+import { gResource, Resource } from './interface/resource';
 import { ResourceService } from './resource.service';
 import { NotificationService } from '../notifications/notification.service';
 import { BiblioService } from './biblio/biblio.service';
@@ -20,7 +20,7 @@ export class DownloadService {
    *Get all resources if its logged
    */
   async getAllResources(logged: boolean) {
-    let data: Resource[] = [];
+    let data: gResource[] = [];
     let promise = new Promise((resolve, reject) => {
       this.notification.loading();
       this.resourceService.getAllResources(logged).subscribe((v) => {
@@ -37,7 +37,7 @@ export class DownloadService {
    *Get resources by plan
    */
   async getPlanResources(logged: boolean) {
-    let data: Resource[] = [];
+    let data: gResource[] = [];
     let promise = new Promise((resolve, reject) => {
       this.notification.loading();
       this.resourceService.getPlanResources(3).subscribe((v) => {
@@ -58,7 +58,7 @@ export class DownloadService {
    *Get all biblio resources
    */
    async getBiblioResource() {
-    let data: Biblio[] = [];
+    let data: any;
     let promise = new Promise((resolve, reject) => {
       this.notification.loading();
       this.biblio.getBiblioResource().subscribe((v) => {
@@ -81,4 +81,26 @@ export class DownloadService {
     this.biblio.saveResource(id).subscribe(val => this.notification.success("Recurso agregado"))
     
 }
+
+
+  /**
+   *Get own resources
+   */
+   async getMyUploadResource() {
+    let data: any;
+    let promise = new Promise((resolve, reject) => {
+      this.notification.loading();
+      this.biblio.getMyUploadResource().subscribe((v) => {
+        data = v;
+        resolve('')
+      },
+      (err) => reject('')
+      
+      );
+    });
+
+    let result = await promise; // wait until the promise resolves
+    this.notification.exitLoading(10);
+    return data;
+  }
 }

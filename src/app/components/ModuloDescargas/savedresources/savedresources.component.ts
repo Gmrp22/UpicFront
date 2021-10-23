@@ -13,7 +13,7 @@ import { NotificationService } from 'src/app/services/notifications/notification
 })
 export class SavedresourcesComponent implements OnInit {
   public logedIn: Subscription;
-  data: any[] = [];
+  data: any = [];
   private logged: boolean = false;
 
 constructor(
@@ -48,6 +48,7 @@ constructor(
       let promise = this.biblio.getBiblioResource()
       promise.then((value) => {
         this.data = value[0].recursos;
+        console.log(this.data)
       }).catch((err) => this.router.navigateByUrl('download/all-resource'))
     
       

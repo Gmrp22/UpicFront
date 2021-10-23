@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { baseUrl } from 'src/environments/api';
-import { Resource } from './interface/resource';
+import { gResource, Resource } from './interface/resource';
 
 @Injectable({
   providedIn: 'root',
@@ -10,6 +10,7 @@ export class ResourceService {
   private url = `${baseUrl}${'recurso/'}`;
   headers = new HttpHeaders()
     .set('content-type', 'application/json')
+    .set('Acces-Control-Allow-Methods','*')
     .set('Access-Control-Allow-Origin', '*');
 
   constructor(private http: HttpClient) {}
@@ -19,21 +20,22 @@ export class ResourceService {
    */
   getAllResources(logged: boolean) {
     const path = `${baseUrl}${'recursos/'}`;
-    return this.http.get<Resource[]>(path);
+    return this.http.get<gResource[]>(path);
   }
   /**
    *Get resources from a plan
    */
   getPlanResources(plan: number) {
     const path = `${baseUrl}${'recurso-plan/'}${plan}`;
-    return this.http.get<Resource[]>(path);
+    return this.http.get<gResource[]>(path);
   }
   /**
    *Create resource
    */
   uploadResource(resource: Resource) {
     const path = `${this.url}`;
-    return this.http.post(path, resource, { headers: this.headers });
+    var header =  new HttpHeaders({'Access-Control-Allow-Origin' :  '*'});
+    return this.http.post(path, resource, { headers: header });
   }
  
 }

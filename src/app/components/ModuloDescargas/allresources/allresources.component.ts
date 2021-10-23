@@ -1,5 +1,5 @@
 import { Component, OnInit, OnChanges } from '@angular/core';
-import { Resource } from 'src/app/services/moduloDescargas/interface/resource';
+import { gResource, Resource } from 'src/app/services/moduloDescargas/interface/resource';
 import { ResourceService } from 'src/app/services/moduloDescargas/resource.service';
 import { DownloadService } from 'src/app/services/moduloDescargas/download.service';
 import { AuthService } from 'src/app/services/moduloUsuarios/auth.service';
@@ -13,7 +13,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class AllresourcesComponent implements OnInit {
   public logedIn: Subscription;
-  data: Resource[] = [];
+  data: gResource[] = [];
   private logged: boolean = false;
 
   constructor(

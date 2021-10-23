@@ -18,7 +18,7 @@ import {
       request: HttpRequest<any>,
       next: HttpHandler
     ): Observable<HttpEvent<any>> {
-      if((request.url== 'http://34.195.25.223/add-recurso-biblio/')||(request.url== 'http://34.195.25.223/biblioteca/')){
+      if((request.url== 'http://34.195.25.223/recurso-biblio/')||(request.url== 'http://34.195.25.223/biblioteca/')){
       return next.handle(request).pipe(
         catchError((error: HttpErrorResponse) => {
           if (request.method == 'POST') {
