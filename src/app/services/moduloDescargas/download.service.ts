@@ -25,7 +25,7 @@ export class DownloadService {
       this.notification.loading();
       this.resourceService.getAllResources(logged).subscribe((v) => {
         data = v;
-        resolve('')
+        resolve('');
       });
     });
 
@@ -40,9 +40,9 @@ export class DownloadService {
     let data: gResource[] = [];
     let promise = new Promise((resolve, reject) => {
       this.notification.loading();
-      this.resourceService.getPlanResources(3).subscribe((v) => {
+      this.resourceService.getPlanResources(1).subscribe((v) => {
         data = v;
-      resolve('')
+        resolve('');
       });
     });
 
@@ -51,22 +51,22 @@ export class DownloadService {
     return data;
   }
 
-   /**
+  /**
    *Biblioteca:
    */
   /**
    *Get all biblio resources
    */
-   async getBiblioResource() {
+  async getBiblioResource() {
     let data: any;
     let promise = new Promise((resolve, reject) => {
       this.notification.loading();
-      this.biblio.getBiblioResource().subscribe((v) => {
-        data = v;
-        resolve('')
-      },
-      (err) => reject('')
-      
+      this.biblio.getBiblioResource().subscribe(
+        (v) => {
+          data = v;
+          resolve('');
+        },
+        (err) => reject('')
       );
     });
 
@@ -77,25 +77,25 @@ export class DownloadService {
   /**
    *Add resource to biblio
    */
-   addBiblioResource(id:number) {
-    this.biblio.saveResource(id).subscribe(val => this.notification.success("Recurso agregado"))
-    
-}
-
+  addBiblioResource(id: number) {
+    this.biblio
+      .saveResource(id)
+      .subscribe((val) => this.notification.success('Recurso agregado'));
+  }
 
   /**
    *Get own resources
    */
-   async getMyUploadResource() {
+  async getMyUploadResource() {
     let data: any;
     let promise = new Promise((resolve, reject) => {
       this.notification.loading();
-      this.biblio.getMyUploadResource().subscribe((v) => {
-        data = v;
-        resolve('')
-      },
-      (err) => reject('')
-      
+      this.biblio.getMyUploadResource().subscribe(
+        (v) => {
+          data = v;
+          resolve('');
+        },
+        (err) => reject('')
       );
     });
 

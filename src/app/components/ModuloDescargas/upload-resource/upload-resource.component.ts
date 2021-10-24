@@ -25,8 +25,7 @@ export class UploadResourceComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private uploadService: UploadService,
-    private router: Router,
-
+    private router: Router
   ) {
     this.resourceForm = this.formBuilder.group({
       name: ['', Validators.required],
@@ -44,8 +43,9 @@ export class UploadResourceComponent implements OnInit {
     this.submitted = true;
 
     if (this.resourceForm.valid) {
- 
-      this.uploadService.uploadResource(this.resourceForm, this.image).then(val => this.router.navigateByUrl('download/my-resource'))
+      this.uploadService
+        .uploadResource(this.resourceForm, this.image)
+        .then((val) => this.router.navigateByUrl('download/my-resource'));
     } else {
       console.log('--');
     }
@@ -64,10 +64,7 @@ export class UploadResourceComponent implements OnInit {
     reader.onload = (_event) => {
       this.msg = '';
       this.url = reader.result;
-      this.image = this.url.replace("data:", "").replace(/^.+,/, "");
+      this.image = this.url.replace('data:', '').replace(/^.+,/, '');
     };
   }
-
-
-
 }

@@ -9,27 +9,28 @@ import { NotificationService } from 'src/app/services/notifications/notification
 @Component({
   selector: 'app-myresources',
   templateUrl: './myresources.component.html',
-  styleUrls: ['./myresources.component.css']
+  styleUrls: ['./myresources.component.css'],
 })
 export class MyresourcesComponent implements OnInit {
   public logedIn: Subscription;
   data: any = [];
   private logged: boolean = false;
 
-constructor(
+  constructor(
     auth: AuthService,
     private _sanitizer: DomSanitizer,
-    private biblio:DownloadService,
+    private biblio: DownloadService,
     private notification: NotificationService,
-    private router: Router,
+    private router: Router
   ) {
     this.logedIn = auth.signedIn.subscribe((val) => {
       this.logged = val ? true : false;
-
     });
   }
 
-  ngOnInit(): void {    this.getResources();}
+  ngOnInit(): void {
+    this.getResources();
+  }
 
   ngOnDestroy(): void {
     this.logedIn.unsubscribe();
@@ -42,23 +43,17 @@ constructor(
   /**
    *Loads all the resources from the biblio
    */
-   async getResources() {
-     
+  async getResources() {
     if (this.logged == true) {
-      let promise = this.biblio.getMyUploadResource()
-      promise.then((value) => {
-        this.data = value;
-        console.log(this.data,"-----")
-      }).catch((err) => this.router.navigateByUrl('download/all-resource'))
-    
-      
-    } 
-
-
-
-    
+      let promise = this.biblio.getMyUploadResource();
+      promise
+        .then((value) => {
+          this.data = value;
+        })
+        .catch((err) => this.router.navigateByUrl('download/all-resource'));
+    }
   }
-    /**
+  /**
    *Decodes imgaes
    */
   decode(e: any) {
@@ -66,7 +61,4 @@ constructor(
     let thumbnail = this._sanitizer.bypassSecurityTrustUrl(objectURL);
     return thumbnail;
   }
-
-
-
 }

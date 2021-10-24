@@ -1,5 +1,8 @@
 import { Component, OnInit, OnChanges } from '@angular/core';
-import { gResource, Resource } from 'src/app/services/moduloDescargas/interface/resource';
+import {
+  gResource,
+  Resource,
+} from 'src/app/services/moduloDescargas/interface/resource';
 import { ResourceService } from 'src/app/services/moduloDescargas/resource.service';
 import { DownloadService } from 'src/app/services/moduloDescargas/download.service';
 import { AuthService } from 'src/app/services/moduloUsuarios/auth.service';
@@ -20,7 +23,7 @@ export class AllresourcesComponent implements OnInit {
     private resourceService: ResourceService,
     auth: AuthService,
     private downloadService: DownloadService,
-    private _sanitizer: DomSanitizer,
+    private _sanitizer: DomSanitizer
   ) {
     this.logedIn = auth.signedIn.subscribe((val) => {
       this.logged = val ? true : false;
@@ -54,7 +57,7 @@ export class AllresourcesComponent implements OnInit {
       });
     }
   }
-    /**
+  /**
    *Decodes imgaes
    */
   decode(e: any) {
@@ -62,9 +65,10 @@ export class AllresourcesComponent implements OnInit {
     let thumbnail = this._sanitizer.bypassSecurityTrustUrl(objectURL);
     return thumbnail;
   }
-
-  save(resource: any){
-    this.downloadService.addBiblioResource(resource.id)
+  /**
+   *Adds resource to biblio
+   */
+  save(resource: any) {
+    this.downloadService.addBiblioResource(resource.id);
   }
-
 }
