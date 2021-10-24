@@ -29,7 +29,6 @@
   font-weight: bold;
   color: #000000;
   display: block;
-  margin: 5%;
   font-size: calc(var(--text-multipler) * 1vw);
 }
 .plan-label {
@@ -43,7 +42,8 @@
 }
 
 .resource-plan {
-padding: 20% 0% 0% var(--plan-padding);
+padding: 0% 2% 0% 2%;
+text-align: end;
 
 }
 /* Image */
@@ -67,6 +67,8 @@ img{
   margin-bottom: 1.5vh;
   font-size: calc(var(--text-multipler) * 1vw);
   --bs-gutter-x: 0rem;
+  display: flex;
+
 }
 
 /* Columns */
@@ -76,7 +78,7 @@ img{
   margin-top: 2%;
 }
 .col1{
-  width: 50%;
+  width: 100%;
   display: inline-block;
 }
 
@@ -121,10 +123,7 @@ img{
       --text-multipler: 4;
 
     }
-    .resource-plan {
-      padding: 10% 0% 0% var(--plan-padding);
-      
-      }
+ 
 
   }
 
@@ -140,10 +139,7 @@ img{
       --text-multipler: 2;
       --plan-padding:20%;
     }
-    .resource-plan {
-      padding: 1.5rem 0% 0% var(--plan-padding);
-      
-      }
+  
 }
 @media only screen 
   and (min-device-width: 1024px)  and (max-device-width: 1200px)   {
@@ -151,10 +147,7 @@ img{
       --text-multipler: 2;
       --plan-padding:20%;
     }
-    .resource-plan {
-      padding: 9% 0% 0% var(--plan-padding);
-      
-      }
+ 
 }
 @media only screen 
   and (min-device-width: 1024px)  and (max-device-width: 1200px) and (max-height:1400px)  {
@@ -162,8 +155,4 @@ img{
       --text-multipler: 2;
       --plan-padding:20%;
     }
-    .resource-plan {
-      padding: 20% 0% 0% var(--plan-padding);
-      
-      }
 }
