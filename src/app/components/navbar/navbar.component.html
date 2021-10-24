@@ -1,7 +1,7 @@
 <nav id="nav-color">
   <div>
-    <div *ngIf="user; else notUser">
-      <ul>
+    <!-- <div *ngIf="user; else notUser"> -->
+      <ul *ngIf="user; else notUser">
         <li ><a>Inicio</a></li>
         <li><a routerLink="/download/all-resource" [routerLinkActive]="['linkActive']"> Descubre</a></li>
         <li><a routerLink="/download/saved-resource" [routerLinkActive]="['linkActive']">Tus descargas</a></li>
@@ -40,14 +40,14 @@
           </div>
         </li>
       </ul>
-    </div>
+    <!-- </div> -->
 
     <!-- Not logged -->
     <ng-template #notUser>
       <ul>
         <li><a>Inicio</a></li>
         <li><a routerLink="/download/all-resource" [routerLinkActive]="['linkActive']"> Descubre</a></li>
-
+        <li><a routerLink="/user/login" >Iniciar sesion </a></li>
         <li><a routerLink="">Contacto</a></li>
         <li></li>
       </ul>

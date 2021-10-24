@@ -21,7 +21,6 @@ export class UploadService {
       tipo: resource.get('type')?.value,
       plan: resource.get('plan')?.value,
       recurso: img,
-      owner: 2,
     };
     let promise = new Promise((resolve, reject) => {
       this.notification.loading();
@@ -30,16 +29,17 @@ export class UploadService {
         (value) => {
           this.notification.success('Recurso agregado');
           resolve('');
-          this.notification.exitLoading(10);
+         
         },
         (err) => {
           reject('');
-          this.notification.exitLoading(10);
+        
         }
       );
     });
 
     let result = await promise; // wait until the promise resolves
+    this.notification.exitLoading(1);
     promise.then((val) => this.notification.success('Recurso agregado'));
   }
 }

@@ -25,11 +25,11 @@ constructor(
   ) {
     this.logedIn = auth.signedIn.subscribe((val) => {
       this.logged = val ? true : false;
-    this.getResources();
+
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {    this.getResources();}
 
   ngOnDestroy(): void {
     this.logedIn.unsubscribe();
@@ -47,7 +47,7 @@ constructor(
     if (this.logged == true) {
       let promise = this.biblio.getMyUploadResource()
       promise.then((value) => {
-        this.data = value[0].recursos;
+        this.data = value;
         console.log(this.data,"-----")
       }).catch((err) => this.router.navigateByUrl('download/all-resource'))
     

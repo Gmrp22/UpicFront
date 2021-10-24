@@ -25,11 +25,10 @@ constructor(
   ) {
     this.logedIn = auth.signedIn.subscribe((val) => {
       this.logged = val ? true : false;
-    this.getResources();
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {    this.getResources();}
 
   ngOnDestroy(): void {
     this.logedIn.unsubscribe();
