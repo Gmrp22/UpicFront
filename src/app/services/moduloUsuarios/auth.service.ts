@@ -126,6 +126,7 @@ export class AuthService {
    */
   emailSignup(user: FormGroup) {
     let email = user.get('email')?.value;
+    email = email.toLowerCase()
     let password = user.get('password')?.value;
     this.auth
       .createUserWithEmailAndPassword(email, password)

@@ -1,8 +1,12 @@
 import { Component, OnInit, OnChanges } from '@angular/core';
-import { Resource } from 'src/app/services/moduloDescargas/interface/resource';
+import {
+  gResource,
+  Resource,
+} from 'src/app/services/moduloDescargas/interface/resource';
 import { ResourceService } from 'src/app/services/moduloDescargas/resource.service';
 import { DownloadService } from 'src/app/services/moduloDescargas/download.service';
 import { AuthService } from 'src/app/services/moduloUsuarios/auth.service';
+import { BiblioService } from 'src/app/services/moduloDescargas/biblio/biblio.service';
 import { Subscription } from 'rxjs';
 import { DomSanitizer } from '@angular/platform-browser';
 @Component({
@@ -12,7 +16,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class AllresourcesComponent implements OnInit {
   public logedIn: Subscription;
-  data: Resource[] = [];
+  data: gResource[] = [];
   private logged: boolean = false;
 
   constructor(
@@ -53,12 +57,18 @@ export class AllresourcesComponent implements OnInit {
       });
     }
   }
-  imagePath: any;
+  /**
+   *Decodes imgaes
+   */
   decode(e: any) {
     let objectURL = 'data:image/jpeg;base64,' + e;
     let thumbnail = this._sanitizer.bypassSecurityTrustUrl(objectURL);
-
-    
     return thumbnail;
+  }
+  /**
+   *Adds resource to biblio
+   */
+  save(resource: any) {
+    this.downloadService.addBiblioResource(resource.id);
   }
 }
