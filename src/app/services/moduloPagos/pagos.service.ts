@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 
@@ -10,11 +10,15 @@ export class PagosService {
   
   constructor(private http: HttpClient) {}
 
-  charge(email:any, id:any){
+  charge(email:any, id:any, token: any){
+    const myheaders = new HttpHeaders({
+      'Authorization': 'Bearer ' + token,
+      'content-type': 'application/json'
+    });
     return this.http.post(this.ruta + '/pagos/', {
       //stripeToken: tokenId, //estoy es lo que pide el endpoint
       email: email,    //se cambiara
       payment_method_id: id
-    })
+    }, { headers: myheaders })
   }
 }

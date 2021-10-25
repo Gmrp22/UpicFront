@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { PlanItem } from 'src/app/models/planItem';
 import { SubscriptionItem } from 'src/app/models/subscriptionItem';
 import { Observable, Subject } from 'rxjs';
@@ -52,7 +52,7 @@ export class SuscripcionService {
     .set('content-type', 'application/json')
     .set('Access-Control-Allow-Origin', '*')
     .set('Access-Control-Allow-Methods', '*');
-    return this.httpc.get(this.ruta + '/suscripcion?email=' + email, { headers: myheaders })
+    return this.httpc.get(this.ruta + '/suscripcion?email=' + '`' + email + '`', { headers: myheaders})
   }
 
   subscribe(s: SubscriptionItem) {

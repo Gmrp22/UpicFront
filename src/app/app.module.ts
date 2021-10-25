@@ -21,6 +21,7 @@ import { environment } from 'src/environments/environment';
 import { HttpClientModule } from  '@angular/common/http';
 import { fireKey } from 'src/environments/firebaseKey';
 import { JoinComponent } from './components/Extras/join/join.component';
+import { PrincipalComponent } from './components/Extras/principal/principal.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { JoinComponent } from './components/Extras/join/join.component';
     SidebarComponent,
     ReportComponent,
     JoinComponent,
+    PrincipalComponent,
 
   ],
   imports: [

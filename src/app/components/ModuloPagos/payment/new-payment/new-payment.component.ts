@@ -17,6 +17,8 @@ export class NewPaymentComponent implements OnInit, AfterViewInit {
   @ViewChild('cardInfo') cardInfo?: ElementRef;
   public user: UserInfo | undefined;
   public logedIn: Subscription;
+  public token: any;
+  public userToken: Subscription;
   // @ViewChild('cardNumber') cardNumberElement?: ElementRef;
   cardError?: string | null;
   // cardNumbError?: string | null;
@@ -35,6 +37,10 @@ export class NewPaymentComponent implements OnInit, AfterViewInit {
     this.logedIn = authService.signedIn.subscribe((user) => {
       this.user = user;
     });
+    this.userToken = authService.userToken.subscribe((token) => {
+      this.token = token;
+    });
+    
    }
 
   ngOnInit(): void {    
@@ -43,38 +49,6 @@ export class NewPaymentComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(){
     this.card = elements.create('card');
    this.card.mount(this.cardInfo?.nativeElement);
-
-  //  //número de tarjeta
-  //   this.cardnum = elements.create('cardNumber', {
-  //     style: this.style,
-  //     placeholder: 'Número de tarjeta',        
-  //   });
-  //   this.cardnum.mount('#card-number-element');
-  //   this.cardnum.addEventListener('change', this.onChange.bind(this));
-
-  //  //fecha exp
-  //   this.cardExp = elements.create('cardExpiry', {
-  //     style: this.style,
-  //     placeholder: 'Fecha de vencimiento (MM/AA)',        
-  //   });
-  //   this.cardExp.mount('#card-exp-element');
-  //   this.cardExp.addEventListener('change', this.onChange2.bind(this));
-
-  //  //cvv
-  //   this.cardCVV = elements.create('cardCvc', {
-  //     style: this.style,
-  //     placeholder: 'Código de seguridad (CVV)',        
-  //   });
-  //   this.cardCVV.mount('#card-cvv-element');
-  //   this.cardCVV.addEventListener('change', this.onChange3.bind(this));
-
-  //  //postal
-  //   this.cardPost = elements.create('cardCvc', {
-  //     style: this.style,
-  //     placeholder: 'Código de seguridad (CVV)',        
-  //   });
-  //   this.cardCVV.mount('#card-cvv-element');
-  //   this.cardCVV.addEventListener('change', this.onChange3.bind(this));
   }
 
   onChange({error}:any){
@@ -86,24 +60,6 @@ export class NewPaymentComponent implements OnInit, AfterViewInit {
     }    
   }
 
-  // onChange2({error}:any){
-  //   if(error){
-  //     this.ngZone.run(()=> this.cardExError = error.message);      
-  //   }    
-  //   else{
-  //     this.ngZone.run(()=> this.cardExError = null);
-  //   }    
-  // }
-
-  // onChange3({error}:any){
-  //   if(error){
-  //     this.ngZone.run(()=> this.cardCVVError = error.message);      
-  //   }    
-  //   else{
-  //     this.ngZone.run(()=> this.cardCVVError = null);
-  //   }    
-  // }
-
   async onClick(){
     // console.log(this.cardInfo?.nativeElement.querySelector('div')?.querySelector('input')?.value);    
     //const {token, error} = await stripe.createToken(this.card);
@@ -114,7 +70,7 @@ export class NewPaymentComponent implements OnInit, AfterViewInit {
      });
     if(this.router.getCurrentNavigation()?.extras.state?.subscription.planId !== 0){
       //const precio = this.suscriptionService.getPlan(this.router.getCurrentNavigation()?.extras.state?.subscription.precio);
-      this.pagosService.charge(this.user?.email, paymentMethod.id).subscribe(data =>{  
+      this.pagosService.charge(this.user?.email, paymentMethod.id, this.token).subscribe(data =>{  
         this.suscriptionService.subscribe(this.router.getCurrentNavigation()?.extras.state?.subscription).subscribe(data =>{
           this.notificationService.success('succes'); 
         }, err => {
