@@ -1,15 +1,15 @@
 <nav id="nav-color">
   <div>
-    <div *ngIf="user; else notUser">
-      <ul>
-        <li><a>Inicio</a></li>
-        <li><a routerLink="/download/all-resource"> Descubre</a></li>
-        <li><a routerLink="/download/saved-resource">Tus descargas</a></li>
-        <li>
-          <a routerLink="/download/my-resource">Tus recursos</a>
-          <div class="dropdown-content">
-            <a routerLink="/download/upload-resource">Subir un recurso</a>
-            <a routerLink="/download/my-resource">Mis recursos</a>
+    <!-- <div *ngIf="user; else notUser"> -->
+      <ul *ngIf="user; else notUser">
+        <li ><a>Inicio</a></li>
+        <li><a routerLink="/download/all-resource" [routerLinkActive]="['linkActive']"> Descubre</a></li>
+        <li><a routerLink="/download/saved-resource" [routerLinkActive]="['linkActive']">Tus descargas</a></li>
+        <li [routerLinkActive]="['linkActive']">
+          <a routerLink="/download/my-resource" [routerLinkActive]="['linkActive']">Tus recursos</a>
+          <div class="dropdown-content" [routerLinkActive]="['linkActive']">
+            <a routerLink="/download/upload-resource" [routerLinkActive]="['linkActive']">Subir un recurso</a>
+            <a routerLink="/download/my-resource" [routerLinkActive]="['linkActive']">Mis recursos</a>
           </div>
         </li>
         <li><a>Contacto</a></li>
@@ -40,17 +40,17 @@
           </div>
         </li>
       </ul>
-    </div>
+    <!-- </div> -->
 
     <!-- Not logged -->
     <ng-template #notUser>
       <ul>
+
         <li><a routerLink="../../principal">Inicio</a></li>
-        <li><a routerLink="/download/all-resource"> Descubre</a></li>
-        <li><a routerLink="../../join">Tus descargas</a></li>
-        <li>
-          <a routerLink="../../join">Tus recursos</a>
-        </li>
+
+        <li><a routerLink="/download/all-resource" [routerLinkActive]="['linkActive']"> Descubre</a></li>
+        <li><a routerLink="/user/login" >Iniciar sesion </a></li>
+
         <li><a routerLink="">Contacto</a></li>
         <li></li>
       </ul>

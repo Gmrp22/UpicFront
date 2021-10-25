@@ -1,9 +1,10 @@
 <div class="background">
   <div class="form-container">
     <div class="bf-main-background">
-      <div class="col-sm bf-background">
-        <h1 class="title">Subir recurso</h1>
-        <form [formGroup]="resourceForm">
+      <h1 class="title">Subir recurso</h1>
+      <div class=" bf-background">
+      
+        <form [formGroup]="resourceForm" class="resourceForm">
           <div class="form-group">
             <input
               type="text"
@@ -75,21 +76,8 @@
             >
               El plan es requerido
             </span>
-          </div>
-        </form>
-        <div class="container form-buttons">
-          <div class="row">
-            <div class="col-sm">
-              <button
-                type="button"
-                class="btn btn-outline-danger"
-                id="button-cancel"
-              >
-                Cancelar
-              </button>
-            </div>
-            <div class="col-sm col-2"></div>
-            <div class="col-sm">
+            <div class="container form-buttons">
+         
               <button
                 type="button"
                 class="btn btn-outline-info"
@@ -98,10 +86,11 @@
               >
                 Aceptar
               </button>
-            </div>
-          </div>
-        </div>
+            
       </div>
+          </div>
+        </form>
+
     </div>
   </div>
 </div>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { UploadService } from 'src/app/services/moduloDescargas/upload.service';
 import { Resource } from 'src/app/services/moduloDescargas/interface/resource';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-upload-resource',
   templateUrl: './upload-resource.component.html',
@@ -24,7 +25,7 @@ export class UploadResourceComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private uploadService: UploadService,
-
+    private router: Router
   ) {
     this.resourceForm = this.formBuilder.group({
       name: ['', Validators.required],
@@ -42,10 +43,9 @@ export class UploadResourceComponent implements OnInit {
     this.submitted = true;
 
     if (this.resourceForm.valid) {
-      // this.resourceForm.setValue({
-      //   resource: this.image,
-      // });
-      this.uploadService.uploadResource(this.resourceForm, this.image);
+      this.uploadService
+        .uploadResource(this.resourceForm, this.image)
+        .then((val) => this.router.navigateByUrl('download/my-resource'));
     } else {
       console.log('--');
     }
@@ -64,8 +64,7 @@ export class UploadResourceComponent implements OnInit {
     reader.onload = (_event) => {
       this.msg = '';
       this.url = reader.result;
-      this.image = 'data:image/jpeg;base64,' + btoa(this.url);
-      console.log(this.image);
+      this.image = this.url.replace('data:', '').replace(/^.+,/, '');
     };
   }
 }
