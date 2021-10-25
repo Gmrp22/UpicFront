@@ -45,9 +45,12 @@
     <!-- Not logged -->
     <ng-template #notUser>
       <ul>
-        <li><a>Inicio</a></li>
+
+        <li><a routerLink="../../principal">Inicio</a></li>
+
         <li><a routerLink="/download/all-resource" [routerLinkActive]="['linkActive']"> Descubre</a></li>
         <li><a routerLink="/user/login" >Iniciar sesion </a></li>
+
         <li><a routerLink="">Contacto</a></li>
         <li></li>
       </ul>

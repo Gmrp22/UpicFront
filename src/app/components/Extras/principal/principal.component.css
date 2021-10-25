@@ -1,0 +1,41 @@
+.app {  
+    background-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.55),
+      rgba(0, 0, 0, 0.40)
+    ), url('../../../../assets/background.jpg');
+    height: calc(100vh - 62px);
+    /*margin-top: -62px; preguntarle a gilda*/
+    background-size: cover;
+  }
+
+  .container{      
+    margin-left: 10%;
+    padding-top: 20%;
+  }
+
+  .lema {
+    color: #DEF2F1;
+    opacity: 0.8;
+    font-family: Ubuntu;
+    font-weight: bold;
+    font-size: 32px;
+    line-height: 32px;
+    width: 700px;
+    text-align: left;
+  }
+
+  .join{
+    font-size: 20px;
+    color: #DEF2F1;
+    opacity: 0.7;
+    font-family: Roboto Condensed;
+    line-height: 48px;
+    font-weight: bolder;
+    text-decoration: none;
+  }
+
+  .join:hover{
+    color: #DEF2F1;
+    opacity: 0.9;
+  }
