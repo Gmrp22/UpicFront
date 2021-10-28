@@ -46,13 +46,8 @@ export class SuscripcionService {
   }
 
   getSubscription(email: String): Observable<any>{ 
-    const myheaders = new HttpHeaders({
-      'content-type': 'application/json'
-    })
-    .set('content-type', 'application/json')
-    .set('Access-Control-Allow-Origin', '*')
-    .set('Access-Control-Allow-Methods', '*');
-    return this.httpc.get(this.ruta + '/suscripcion?email=' + '`' + email + '`', { headers: myheaders})
+    const path = `${this.ruta}${'/suscripcion?email='}${email}`;
+    return this.httpc.get(path)
   }
 
   subscribe(s: SubscriptionItem) {

@@ -55,7 +55,7 @@ const routes: Routes = [
 
   },
   {
-    path: 'principal',
+    path: 'main',
     component: PrincipalComponent,
 
   },

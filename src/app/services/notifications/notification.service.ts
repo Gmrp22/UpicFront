@@ -13,12 +13,12 @@ export class NotificationService {
   success2(message: string){
    Report.success( message, 
     '', 
-    'Click' ); 
+    'Ok' ); 
   }
   fail(message: string){
     Report.failure( message, 
       '', 
-      'Click' ); 
+      'Ok' ); 
   }
   error(message: string){
     Notify.failure(message, { timeout: 1500 });

@@ -1,10 +1,2 @@
-<!-- Not showing Navbar -->
-<div *ngIf="url; else notLogin">
-  <router-outlet></router-outlet>
-</div>
-<!-- Showing Navbar -->
-<ng-template #notLogin>
-  <app-navbar></app-navbar>
-  <router-outlet></router-outlet>
-</ng-template>
-
+<app-navbar></app-navbar>
+<router-outlet></router-outlet>
