@@ -1,15 +1,21 @@
-.app {  
-    background-image: linear-gradient(
+*{
+  --text: 3vw;
+  --w-text: 100%
+}
+
+.app {
+    background: linear-gradient(
       to bottom,
       rgba(0, 0, 0, 0.55),
       rgba(0, 0, 0, 0.40)
-    ), url('../../../../assets/background.jpg');
+    ), url('../../../../assets/background.jpg') no-repeat left top;
     height: calc(100vh - 62px);
     /*margin-top: -62px; preguntarle a gilda*/
     background-size: cover;
+
   }
 
-  .container{      
+  .contain{
     margin-left: 10%;
     padding-top: 20%;
   }
@@ -19,10 +25,10 @@
     opacity: 0.8;
     font-family: Ubuntu;
     font-weight: bold;
-    font-size: 32px;
-    line-height: 32px;
-    width: 700px;
-    text-align: left;
+    font-size: var(--text);
+    line-height: 8vh;
+    width: var(--w-text);
+
   }
 
   .join{
@@ -33,9 +39,19 @@
     line-height: 48px;
     font-weight: bolder;
     text-decoration: none;
+ 
   }
 
   .join:hover{
-    color: #DEF2F1;
+    color: #fbad59;
     opacity: 0.9;
+  }
+
+
+  @media screen and (max-width:480px) {
+    *{
+      --text:7vw;
+      --w-text:90%;
+    }
+
   }

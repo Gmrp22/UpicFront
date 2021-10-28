@@ -2,7 +2,8 @@
   <div>
     <!-- <div *ngIf="user; else notUser"> -->
       <ul *ngIf="user; else notUser">
-        <li ><a>Inicio</a></li>
+       
+        <li><a routerLink="../../main" [routerLinkActive]="['linkActive']">Inicio</a></li>
         <li><a routerLink="/download/all-resource" [routerLinkActive]="['linkActive']"> Descubre</a></li>
         <li><a routerLink="/download/saved-resource" [routerLinkActive]="['linkActive']">Tus descargas</a></li>
         <li [routerLinkActive]="['linkActive']">
@@ -33,7 +34,7 @@
               <a routerLink="/user/profile-user">Tu perfil</a>
               <a routerLink="/download/my-resource">Recursos subidos</a>
               <a routerLink="/download/saved-resource">Descargas</a>
-              <a routerLink="/user/edit-user">Configuración de cuenta</a>
+         
               <div class="dropdown-divider"></div>
               <a> <button id="cs" (click)="logout()">Cerrar sesion</button></a>
             </div>
@@ -46,10 +47,10 @@
     <ng-template #notUser>
       <ul>
 
-        <li><a routerLink="../../principal">Inicio</a></li>
+        <li><a routerLink="../../main" [routerLinkActive]="['linkActive']">Inicio</a></li>
 
         <li><a routerLink="/download/all-resource" [routerLinkActive]="['linkActive']"> Descubre</a></li>
-        <li><a routerLink="/user/login" >Iniciar sesion </a></li>
+        <li><a routerLink="/user/login" [routerLinkActive]="['linkActive']">Iniciar sesion </a></li>
 
         <li><a routerLink="">Contacto</a></li>
         <li></li>
