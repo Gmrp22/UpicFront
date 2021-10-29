@@ -16,7 +16,7 @@ export class ChangeSubscriptionComponent implements OnInit {
 
   plans: PlanItem[] = [];  
   planID: number = 0;
-  subscription: SubscriptionItem = { planId: 0, usuarioId: 0 };
+  subscription: SubscriptionItem = { planId: 0 };
   public logedIn: Subscription;
   public user: UserInfo | undefined;
   susc: any;
@@ -43,22 +43,20 @@ export class ChangeSubscriptionComponent implements OnInit {
   suscribe(planID: number){    
     this.planID = planID;
     this.subscription = {
-      planId: planID,
-      usuarioId: 2
+      planId: planID
     }
   }
 
   resetSubscription(){
     this.subscription = {
-      planId: 0,
-      usuarioId: 1
+      planId: 0
     }
     this.router.navigate(['./']);
   }
 
   saveSuscription(){    //change and add to html
     if(this.subscription.planId !== 0){
-      this.suscriptionService.changeSubscription(this.subscription).subscribe(data =>{
+      this.suscriptionService.changeSubscription(this.subscription, this.susc).subscribe(data =>{
         this.router.navigate(['payment/new-payment']);
         console.log('success');      
       }, err => {

@@ -71,18 +71,18 @@ export class NewPaymentComponent implements OnInit, AfterViewInit {
     if(this.router.getCurrentNavigation()?.extras.state?.subscription.planId !== 0){
       //const precio = this.suscriptionService.getPlan(this.router.getCurrentNavigation()?.extras.state?.subscription.precio);
       this.pagosService.charge(this.user?.email, paymentMethod.id, this.token).subscribe(data =>{  
-        this.suscriptionService.subscribe(this.router.getCurrentNavigation()?.extras.state?.subscription).subscribe(data =>{
+        this.suscriptionService.changeSubscription(this.router.getCurrentNavigation()?.extras.state?.subscription,21).subscribe(data =>{
           this.notificationService.success('succes'); 
         }, err => {
           console.log('error');
-          this.notificationService.error(error.message); 
+          this.notificationService.error("No se pudo realizar la acción, por favor intente de nuevo"); 
         });
       }, err => {
-        this.notificationService.error(error.message); 
+        this.notificationService.error("No se pudo realizar la acción, por favor intente de nuevo"); 
       });     
     }
     else{
-      this.notificationService.error(error.message);    
+      this.notificationService.error("No se pudo realizar la acción, por favor intente de nuevo");    
     }
   }
 

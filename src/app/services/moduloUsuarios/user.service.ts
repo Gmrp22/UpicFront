@@ -38,16 +38,16 @@ export class UserService {
    */
   createUser(usuario: User) {
     const path = `${this.url}`;
-    return this.http.post(path, usuario, { headers: this.headers })
+    return this.http.post(path, usuario)
   
   }
   /**
    *Delete user by email
    */
   deleteUser(email: String) {
-    let url = `${baseUrl}${'delete-user/'}`;
+    let url = `${baseUrl}${'user/'}`;
     const path = `${url}${email}`;
-    return this.http.delete<User>(path, { headers: this.headers });
+    return this.http.delete<User>(path);
   }
 
 

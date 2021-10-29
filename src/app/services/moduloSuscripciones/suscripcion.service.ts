@@ -55,20 +55,20 @@ export class SuscripcionService {
     return this.httpc.get(this.ruta + '/suscripcion?email=' + '`' + email + '`', { headers: myheaders})
   }
 
-  subscribe(s: SubscriptionItem) {
-    const jsonParms = JSON.stringify(s);    
-    const myheaders = new HttpHeaders({
-      'content-type': 'application/json'
-    });
-    return this.httpc.post(this.ruta + '/suscripcion/', jsonParms, { headers: myheaders });
-  }
+  // subscribe(s: SubscriptionItem) {
+  //   const jsonParms = JSON.stringify(s);    
+  //   const myheaders = new HttpHeaders({
+  //     'content-type': 'application/json'
+  //   });
+  //   return this.httpc.put(this.ruta + '/suscripcion/', jsonParms, { headers: myheaders });
+  // }
 
-  changeSubscription(s: SubscriptionItem){ //change this method
+  changeSubscription(s: SubscriptionItem, planID: any){ //change this method
     const jsonParms = JSON.stringify(s);    
     const myheaders = new HttpHeaders({
       'content-type': 'application/json'
     })
-    return this.httpc.put(this.ruta + '/suscripcion/' + s.usuarioId + '/', jsonParms, { headers: myheaders });
+    return this.httpc.put(this.ruta + '/suscripcion/' + planID + '/', jsonParms, { headers: myheaders });
   }
 
   unSubscribe(userID: number){ //change this method

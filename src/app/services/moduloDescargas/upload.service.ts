@@ -4,36 +4,42 @@ import { Resource } from './interface/resource';
 import { ResourceService } from './resource.service';
 import { NotificationService } from '../notifications/notification.service';
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UploadService {
-
-  constructor(private resourceService:ResourceService, private notification:NotificationService) { }
+  constructor(
+    private resourceService: ResourceService,
+    private notification: NotificationService
+  ) {}
 
   /**
    *Uploads the resource
    */
-  uploadResource(resource: FormGroup, img:string) {
-    let recurso: Resource ={ 
-    nombre : resource.get('name')?.value,
-    tipo : resource.get('type')?.value,
-    plan : resource.get('plan')?.value,
-    recurso : img,
-    owner : 2
+  async uploadResource(resource: FormGroup, img: string) {
+    let recurso: Resource = {
+      nombre: resource.get('name')?.value,
+      tipo: resource.get('type')?.value,
+      plan: resource.get('plan')?.value,
+      recurso: img,
+    };
+    let promise = new Promise((resolve, reject) => {
+      this.notification.loading();
+
+      this.resourceService.uploadResource(recurso).subscribe(
+        (value) => {
+          this.notification.success('Recurso agregado');
+          resolve('');
+         
+        },
+        (err) => {
+          reject('');
+        
+        }
+      );
+    });
+
+    let result = await promise; // wait until the promise resolves
+    this.notification.exitLoading(1);
+    promise.then((val) => this.notification.success('Recurso agregado'));
   }
-  console.log(recurso.recurso)
-  this.resourceService.uploadResource(recurso).subscribe(value => {
-    this.notification.success("Recurso agregado")
-  })
-  }
-  
-  }
-
-
-
-
-
-
-
-
-
+}
