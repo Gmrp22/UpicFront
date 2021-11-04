@@ -8,7 +8,7 @@ const routes: Routes = [
   {
     path: 'payment',
     children: [ {
-      path: 'new-payment',
+      path: 'new-payment/:id', //recibirá el parámetro id
       component: NewPaymentComponent
     },
     {

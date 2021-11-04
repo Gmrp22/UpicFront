@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { PlanItem } from 'src/app/models/planItem';
-import { SubscriptionItem } from 'src/app/models/subscriptionItem';
 import { SuscripcionService } from 'src/app/services/moduloSuscripciones/suscripcion.service';
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/services/moduloUsuarios/auth.service';
@@ -15,18 +14,18 @@ import { UserInfo } from 'src/app/services/moduloUsuarios/interface/userInfo';
 export class ChangeSubscriptionComponent implements OnInit {
 
   plans: PlanItem[] = [];  
-  planID: number = 0;
-  subscription: SubscriptionItem = { planId: 0 };
+  planID: number = 0;  
   public logedIn: Subscription;
   public user: UserInfo | undefined;
-  susc: any;
   constructor(public suscriptionService: SuscripcionService, private router: Router, private authService: AuthService ) {
+    //Se obtiene el usuario loggeado
     this.logedIn = authService.signedIn.subscribe((user) => {
       this.user = user;
     });
    }
 
   ngOnInit(): void {    
+    //Se obtienen los planes registrados
     this.suscriptionService.readDataPlans().subscribe(data => {
       this.plans = data;
       this.plans.forEach(plan => {      
@@ -34,35 +33,17 @@ export class ChangeSubscriptionComponent implements OnInit {
       });  
     });
     this.suscriptionService.getPlans();
-    this.suscriptionService.getSubscription(this.user?.email! ? this.user?.email : '').subscribe(data => {
-      this.susc = data;
-      console.log(this.susc);    
-    })
   }
 
-  suscribe(planID: number){    
+  suscribe(planID: number){  
+    //Al seleccionar un plan se registra en la variable planID, la cual será enviada al componente nuevo pago para realizar la suscripción
     this.planID = planID;
-    this.subscription = {
-      planId: planID
-    }
   }
 
   resetSubscription(){
-    this.subscription = {
-      planId: 0
-    }
+    //Si se selecciona cancelar se resetea la variable y se recarga la página de inicio
+    this.planID= 0;
     this.router.navigate(['./']);
-  }
-
-  saveSuscription(){    //change and add to html
-    if(this.subscription.planId !== 0){
-      this.suscriptionService.changeSubscription(this.subscription, this.susc).subscribe(data =>{
-        this.router.navigate(['payment/new-payment']);
-        console.log('success');      
-      }, err => {
-        console.log('error');
-      });
-    }
   }
 
 }

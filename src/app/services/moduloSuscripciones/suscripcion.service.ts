@@ -20,6 +20,7 @@ export class SuscripcionService {
    }
 
 
+   /*Se cargan los planes existentes en un array de tipo PlanItem*/
   loadPlans(){
     this.httpc.get(this.ruta +'/planes/').pipe(map((response: any) => {
         this.planlist = response;      
@@ -27,6 +28,7 @@ export class SuscripcionService {
     })).subscribe();
   }
 
+  /*Si ya se ha hecho la consulta, solo se devuelve el objeto, sino se llama a la consulta */
   getPlans(){    
     if(this.planlist.length === 0){
       this.loadPlans();            
@@ -36,29 +38,24 @@ export class SuscripcionService {
     }
   }
 
+  /*Se devuelve un plan específico*/
   getPlan(id: number): Observable<any> {
-    // return this.httpc.get('/assets/mockups/specificget.json', { headers: myheaders });
     return this.httpc.get(this.ruta +'/planes/' + id);
   }
 
+  /*Se devuelve el objeto que ya contiene los planes*/
   readDataPlans(): Observable<PlanItem[]> {
     return this.plansSubject.asObservable();
   }
 
+  /*Se devuelve una suscripción según el email*/
   getSubscription(email: String): Observable<any>{ 
     const path = `${this.ruta}${'/suscripcion?email='}${email}`;
     return this.httpc.get(path)
   }
 
-  // subscribe(s: SubscriptionItem) {
-  //   const jsonParms = JSON.stringify(s);    
-  //   const myheaders = new HttpHeaders({
-  //     'content-type': 'application/json'
-  //   });
-  //   return this.httpc.put(this.ruta + '/suscripcion/', jsonParms, { headers: myheaders });
-  // }
-
-  changeSubscription(s: SubscriptionItem, planID: any){ //change this method
+  /*Se cambia la sucripción*/
+  changeSubscription(s: SubscriptionItem, planID: any){
     const jsonParms = JSON.stringify(s);    
     const myheaders = new HttpHeaders({
       'content-type': 'application/json'
@@ -66,6 +63,7 @@ export class SuscripcionService {
     return this.httpc.put(this.ruta + '/suscripcion/' + planID + '/', jsonParms, { headers: myheaders });
   }
 
+  /*Se elimina la suscripción*/
   unSubscribe(userID: number){ //change this method
     return this.httpc.delete(this.ruta + '/suscripcion/' + userID + '/');
   }

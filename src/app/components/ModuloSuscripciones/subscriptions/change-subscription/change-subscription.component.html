@@ -13,7 +13,7 @@
             </div>
         </div>        
         <div class="button">
-            <button type="submit" (click)="saveSuscription()" class="btn btn-outline-primary confirm">Confirmar</button>
+            <button type="submit" [routerLink]="['/payment/new-payment', this.planID]" class="btn btn-outline-primary confirm">Confirmar</button>
             <button type="reset" (click)="resetSubscription()" class="btn btn-outline-danger cancel">Cancelar</button>
         </div>
     </div>

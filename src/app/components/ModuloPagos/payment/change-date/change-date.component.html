@@ -7,7 +7,7 @@
           <div class="input warning">
             <h3 class="warn">
               Tu suscripción  se encuentra actualmente 
-              con fecha de pago día de cada mes, pero
+              con fecha de pago día {{this.day}} de cada mes, pero
               puedes cambiarlo a cualquier día que sea
               de tu conveniencia.
             </h3>
@@ -19,8 +19,7 @@
           </div>
           <form>
             <div class="input">
-              <select class="form-control sel">
-                <option>Día</option>
+              <select [(ngModel)]="this.newDay" [ngModelOptions]="{standalone: true}" class="form-control sel">
                 <option *ngFor="let i of index">{{i}}</option>
               </select>              
               <h3 class="warn small">
@@ -28,7 +27,7 @@
               </h3>
             </div>
             <div class="button">
-              <button type="submit" class="btn btn-outline-primary">Confirmar</button>
+              <button type="submit" (click)="submit()" class="btn btn-outline-primary">Confirmar</button>
             </div>
           </form>            
         </div>

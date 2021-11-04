@@ -10,14 +10,14 @@ export class PagosService {
   
   constructor(private http: HttpClient) {}
 
+  /*Registra nuevo método de pago*/
   charge(email:any, id:any, token: any){
     const myheaders = new HttpHeaders({
       'Authorization': 'Bearer ' + token,
       'content-type': 'application/json'
     });
     return this.http.post(this.ruta + '/pagos/', {
-      //stripeToken: tokenId, //estoy es lo que pide el endpoint
-      email: email,    //se cambiara
+      email: email,
       payment_method_id: id
     }, { headers: myheaders })
   }
