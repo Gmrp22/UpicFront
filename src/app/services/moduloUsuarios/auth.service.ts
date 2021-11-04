@@ -34,7 +34,7 @@ export class AuthService {
           this.logged = true;
           console.log('Loggeado', this.logged);
           subscriber.next(true);
-          // user.getIdToken().then(a => console.log(a))
+          user.getIdToken().then(a => console.log(a))
           let userInfo = {
             nombres: user?.displayName + '',
             email: user?.email + '',
