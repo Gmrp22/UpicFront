@@ -16,12 +16,14 @@ export class NewSubscriptionComponent implements OnInit {
 
   plans: PlanItem[] = [];
   planID: number = 0;
-  subscription: SubscriptionItem = { planId: 0, usuarioId: 0 };
+  subscription: SubscriptionItem = { planId: 0 };
   public user: UserInfo | undefined;
   public logedIn: Subscription;
   constructor( public suscriptionService: SuscripcionService, private router: Router, private authService: AuthService ) {
     this.logedIn = this.authService.signedIn.subscribe((user) => {
       this.user = user;
+      console.log(user);
+      
     });
    }
 
@@ -38,8 +40,7 @@ export class NewSubscriptionComponent implements OnInit {
   suscribe(planID: number){
     this.planID = planID;
     this.subscription = {
-      planId: planID,
-      usuarioId: 4
+      planId: planID
     }
   }
 
@@ -47,7 +48,7 @@ export class NewSubscriptionComponent implements OnInit {
     if(this.subscription.planId !== 0){     
       this.router.navigate(['payment/new-payment'], { state: this.subscription });
       //AGREGAR ESTE POST CUANDO SE CONFIRME EL METODO DE PAGO
-      this.suscriptionService.subscribe(this.subscription).subscribe(data =>{
+      this.suscriptionService.changeSubscription(this.subscription, 21).subscribe(data =>{
         console.log('success');      
       }, err => {
         console.log('error');
