@@ -20,23 +20,23 @@ export class ChangeDateComponent implements OnInit {
   susc: any;
   day: any;
   constructor(private authService: AuthService, public suscriptionService: SuscripcionService, public notificationService: NotificationService) { 
-    //Se obtiene el usuario loggeado
+    // The logged in user is obtained
     this.logedIn = authService.signedIn.subscribe((user) => {
       this.user = user;
     });
   }
 
   ngOnInit(): void {
-    //Se obtiene la suscripción actual
+    // Get the current subscription
     this.suscriptionService.getSubscription(this.user?.email! ? this.user?.email : '').subscribe(data => {
       this.susc = data;       
-      //Se obtiene el día registrado de la suscripción
+      // Get the registered day of the subscription
       this.day = this.susc.fechaInicio.substring(8,10);
     }) 
   }
 
   submit(){ 
-    if(this.newDay > 0 ){ //Si el nuevo día de pago es válido entonces se realiza el cambio de fecha
+    if(this.newDay > 0 ){ // If the new payment day is valid then the date change is made
       this.notificationService.success("Fecha cambiada exitosamente"); 
     }
     else{

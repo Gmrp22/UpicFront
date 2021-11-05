@@ -20,7 +20,7 @@ export class SuscripcionService {
    }
 
 
-   /*Se cargan los planes existentes en un array de tipo PlanItem*/
+   /* Existing plans are loaded into an array of type PlanItem */
   loadPlans(){
     this.httpc.get(this.ruta +'/planes/').pipe(map((response: any) => {
         this.planlist = response;      
@@ -28,7 +28,7 @@ export class SuscripcionService {
     })).subscribe();
   }
 
-  /*Si ya se ha hecho la consulta, solo se devuelve el objeto, sino se llama a la consulta */
+  /* If the query has already been done, only the object is returned, otherwise the query is called */
   getPlans(){    
     if(this.planlist.length === 0){
       this.loadPlans();            
@@ -38,23 +38,23 @@ export class SuscripcionService {
     }
   }
 
-  /*Se devuelve un plan específico*/
+  /* A specific plan is returned */
   getPlan(id: number): Observable<any> {
     return this.httpc.get(this.ruta +'/planes/' + id);
   }
 
-  /*Se devuelve el objeto que ya contiene los planes*/
+  /* The object that already contains the plans is returned */
   readDataPlans(): Observable<PlanItem[]> {
     return this.plansSubject.asObservable();
   }
 
-  /*Se devuelve una suscripción según el email*/
+  /* A subscription is returned according to the email */
   getSubscription(email: String): Observable<any>{ 
     const path = `${this.ruta}${'/suscripcion?email='}${email}`;
     return this.httpc.get(path)
   }
 
-  /*Se cambia la sucripción*/
+  /* Subscription is changed */
   changeSubscription(s: SubscriptionItem, planID: any){
     const jsonParms = JSON.stringify(s);    
     const myheaders = new HttpHeaders({
@@ -63,9 +63,13 @@ export class SuscripcionService {
     return this.httpc.put(this.ruta + '/suscripcion/' + planID + '/', jsonParms, { headers: myheaders });
   }
 
-  /*Se elimina la suscripción*/
-  unSubscribe(userID: number){ //change this method
-    return this.httpc.delete(this.ruta + '/suscripcion/' + userID + '/');
+  /* Subscription is removed */
+  unSubscribe(planID: number, token: any){
+    const myheaders = new HttpHeaders({
+      'Authorization': 'Bearer ' + token,
+      'content-type': 'application/json'
+    });
+    return this.httpc.put(this.ruta + '/cancelar-suscripcion/' + planID + '/', '', { headers: myheaders });
   }
   
   
