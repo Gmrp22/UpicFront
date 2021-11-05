@@ -40,7 +40,7 @@ export class CancelSubscriptionComponent implements OnInit {
       this.suscriptionService.unSubscribe(this.susc.id, this.token).subscribe(data =>{ //call the unsubscribe method
         this.notificationService.success("Suscripción cancelada exitosamente"); // on success indicate with notification     
       }, err => {
-        this.notificationService.error("No se pudo realizar la acción, por favor intente de nuevo"); // in case of errors it returns a notification
+        this.notificationService.error("Solo se pueden cancelar planes de suscripción que no sean básicos"); // in case of errors it returns a notification
       });
     }
   }
