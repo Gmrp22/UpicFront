@@ -18,14 +18,14 @@ export class ChangeSubscriptionComponent implements OnInit {
   public logedIn: Subscription;
   public user: UserInfo | undefined;
   constructor(public suscriptionService: SuscripcionService, private router: Router, private authService: AuthService ) {
-    //Se obtiene el usuario loggeado
+    // The logged in user is obtained
     this.logedIn = authService.signedIn.subscribe((user) => {
       this.user = user;
     });
    }
 
   ngOnInit(): void {    
-    //Se obtienen los planes registrados
+    // Registered plans are obtained
     this.suscriptionService.readDataPlans().subscribe(data => {
       this.plans = data;
       this.plans.forEach(plan => {      
@@ -36,12 +36,12 @@ export class ChangeSubscriptionComponent implements OnInit {
   }
 
   suscribe(planID: number){  
-    //Al seleccionar un plan se registra en la variable planID, la cual será enviada al componente nuevo pago para realizar la suscripción
+    // When selecting a plan, it is recorded in the variable planID, which will be sent to the new payment component to make the subscription
     this.planID = planID;
   }
 
   resetSubscription(){
-    //Si se selecciona cancelar se resetea la variable y se recarga la página de inicio
+    // If cancel is selected, the variable is reset and the home page is reloaded
     this.planID= 0;
     this.router.navigate(['./']);
   }

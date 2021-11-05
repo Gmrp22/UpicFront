@@ -10,7 +10,7 @@ export class PagosService {
   
   constructor(private http: HttpClient) {}
 
-  /*Registra nuevo método de pago*/
+  /* Register new payment method */
   charge(email:any, id:any, token: any){
     const myheaders = new HttpHeaders({
       'Authorization': 'Bearer ' + token,
