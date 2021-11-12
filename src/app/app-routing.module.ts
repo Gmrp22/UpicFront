@@ -6,6 +6,11 @@ import { PrincipalComponent } from './components/Extras/principal/principal.comp
 const routes: Routes = [
   {
     path: '',
+    component: PrincipalComponent,
+
+  },
+  {
+    path: '',
     children: [
       {
         path: '',
