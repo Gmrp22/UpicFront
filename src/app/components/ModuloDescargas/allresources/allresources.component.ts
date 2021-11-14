@@ -1,4 +1,9 @@
-import { Component, OnInit, OnChanges } from '@angular/core';
+import { Component, OnInit, OnChanges, Inject } from '@angular/core';
+import {
+  MatDialog,
+  MatDialogRef,
+  MAT_DIALOG_DATA,
+} from '@angular/material/dialog';
 import {
   gResource,
   Resource,
@@ -23,7 +28,8 @@ export class AllresourcesComponent implements OnInit {
     private resourceService: ResourceService,
     auth: AuthService,
     private downloadService: DownloadService,
-    private _sanitizer: DomSanitizer
+    private _sanitizer: DomSanitizer,
+    public dialog: MatDialog
   ) {
     this.logedIn = auth.signedIn.subscribe((val) => {
       this.logged = val ? true : false;
@@ -70,5 +76,37 @@ export class AllresourcesComponent implements OnInit {
    */
   save(resource: any) {
     this.downloadService.addBiblioResource(resource.id);
+  }
+
+  openImage(resource: any) {
+    const dialogRef = this.dialog.open(ImageContainer, {
+      width: '50%',
+      height: '50%',
+      data: { name: resource.nombre, image: resource.recurso },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+}
+@Component({
+  selector: 'r',
+  templateUrl: './dialog.html',
+})
+export class ImageContainer {
+  resource: any;
+  constructor(
+    private _sanitizer: DomSanitizer,
+    public dialogRef: MatDialogRef<ImageContainer>,
+    @Inject(MAT_DIALOG_DATA) public data: any
+  ) {
+    this.resource = data;
+  }
+
+  decode() {
+    let objectURL = 'data:image/jpeg;base64,' + this.data.image;
+    let thumbnail = this._sanitizer.bypassSecurityTrustUrl(objectURL);
+    return thumbnail;
   }
 }

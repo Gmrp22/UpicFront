@@ -28,18 +28,16 @@ export class UploadService {
       this.resourceService.uploadResource(recurso).subscribe(
         (value) => {
           this.notification.success('Recurso agregado');
+          this.notification.exitLoading(1);
           resolve('');
-         
         },
         (err) => {
           reject('');
-        
+          this.notification.exitLoading(1);
         }
       );
     });
 
     let result = await promise; // wait until the promise resolves
-    this.notification.exitLoading(1);
-    promise.then((val) => this.notification.success('Recurso agregado'));
   }
 }

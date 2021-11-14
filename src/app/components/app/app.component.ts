@@ -5,6 +5,7 @@ import {
   Event as NavigationEvent,
   NavigationStart,
 } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { AuthService } from '../../services/moduloUsuarios/auth.service';
 @Component({
   selector: 'app-root',
@@ -15,6 +16,8 @@ export class AppComponent {
   title = 'UpicFront';
   public url = true;
   private event$;
+  private logedIn: Subscription;
+  user = false;
   // Gets the active route
   constructor(private router: Router, private authService: AuthService) {
     this.event$ = this.router.events.subscribe((event: NavigationEvent) => {
@@ -26,5 +29,10 @@ export class AppComponent {
         }
       }
     });
+
+    this.logedIn = this.authService.signedIn.subscribe(
+      (flag) => (this.user = flag)
+    );
+    console.log(this.user);
   }
 }

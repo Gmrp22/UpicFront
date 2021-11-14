@@ -46,7 +46,7 @@ export class CreateuserComponent {
     if (this.signupForm.valid) {
       this.authService.emailSignup(this.signupForm);
     } else {
-      console.log('.nek');
+     
     }
   }
 

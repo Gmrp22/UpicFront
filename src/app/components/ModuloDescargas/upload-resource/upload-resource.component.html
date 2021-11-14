@@ -49,9 +49,8 @@
                 Seleccionar tipo de recurso...
               </option>
               <option value="IMG">Imagen</option>
-              <option value="mp4">Video</option>
+              
             </select>
-            <!-- <input type="a" class="form-control" placeholder="Tipo" formControlName="type"/> -->
             <span
               class="text-danger"
               *ngIf="
@@ -61,12 +60,13 @@
             >
               El tipo es requerido
             </span>
-            <input
-              type="text"
-              class="form-control"
-              placeholder="Plan"
-              formControlName="plan"
-            />
+            <select class="form-control" formControlName="plan" >
+        
+              <option value="" disabled selected hidden >Seleccionar plan...</option>
+              <option value="1">Basic</option>
+              <option value="2">Silver</option>
+              <option value="3">Gold</option>
+            </select>
             <span
               class="text-danger"
               *ngIf="

@@ -32,9 +32,8 @@ export class AuthService {
         if (user) {
           //Notify state, changes flag and sends user data
           this.logged = true;
-          console.log('Loggeado', this.logged);
+          // console.log('Loggeado', this.logged);
           subscriber.next(true);
-          user.getIdToken().then(a => console.log(a))
           let userInfo = {
             nombres: user?.displayName + '',
             email: user?.email + '',

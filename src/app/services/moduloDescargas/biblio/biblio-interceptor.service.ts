@@ -19,8 +19,8 @@ export class BiblioInterceptorService {
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
     if (
-      request.url == 'http://34.195.25.223/recurso-biblio/' ||
-      request.url == 'http://34.195.25.223/biblioteca/'
+      request.url == 'https://34.195.25.223:3000/recurso-biblio/' ||
+      request.url == 'https://34.195.25.223:3000/biblioteca/'
     ) {
       return next.handle(request).pipe(
         catchError((error: HttpErrorResponse) => {

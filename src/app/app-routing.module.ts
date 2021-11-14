@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AngularFireAuthGuard } from '@angular/fire/compat/auth-guard';
-import { JoinComponent } from './components/Extras/join/join.component';
 import { PrincipalComponent } from './components/Extras/principal/principal.component';
 const routes: Routes = [
   {
@@ -53,11 +52,6 @@ const routes: Routes = [
           ),
       },
     ],
-  },
-  {
-    path: 'join',
-    component: JoinComponent,
-
   },
   {
     path: 'main',
