@@ -1,0 +1,20 @@
+<div class="background">
+    <div class="bf-background" >
+        <div class="container">
+          <h1 class="title">Cambiar plan de suscripción</h1>
+        </div>
+        <div class="opt-container">
+            <div *ngFor="let plan of plans" [ngStyle]="{'border-color': planID === plan.id ? '#3AAFA9' : '#DEF2F1' }" (click)="suscribe(plan.id)" class="option">                     
+                <h2 class="opt-title">{{plan.nombre}}</h2>
+                <ul>
+                    <li *ngFor="let des of plan.desList">{{des}}</li>
+                </ul>
+                <h1 class="opt-price">${{plan.precio}}</h1>
+            </div>
+        </div>        
+        <div class="button">
+            <button type="submit" [routerLink]="['/payment/new-payment', this.planID]" class="btn btn-outline-primary confirm">Confirmar</button>
+            <button type="reset" (click)="resetSubscription()" class="btn btn-outline-danger cancel">Cancelar</button>
+        </div>
+    </div>
+</div>

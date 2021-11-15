@@ -1,0 +1,106 @@
+<div class="background">
+  <div class="container px-4 py-5 mx-auto">
+    <div class="card card0">
+      <div class="d-flex flex-lg-row flex-column-reverse">
+        <div class="card card1">
+          <div class="row justify-content-center my-auto">
+            <div class="col-md-8 col-10 my-5">
+              <div class="row justify-content-center px-3 mb-3">
+                <svg
+                  id="logo"
+                  xmlns="http://www.w3.org/2000/svg"
+                  x="0px"
+                  y="0px"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M 6 3 C 4.346 3 3 4.346 3 6 L 3 18 C 3 19.654 4.346 21 6 21 L 18 21 C 19.654 21 21 19.654 21 18 L 21 6 C 21 4.346 19.654 3 18 3 L 6 3 z M 10.267578 8 L 13.732422 8 C 13.899422 8 14.055437 8.0836562 14.148438 8.2226562 L 14.5 9 L 16 9 C 16.552 9 17 9.448 17 10 L 17 15 C 17 15.552 16.552 16 16 16 L 8 16 C 7.448 16 7 15.552 7 15 L 7 10 C 7 9.448 7.448 9 8 9 C 8 8.724 8.224 8.5 8.5 8.5 C 8.776 8.5 9 8.724 9 9 L 9.5 9 L 9.8515625 8.2226562 C 9.9435625 8.0836562 10.099578 8 10.267578 8 z M 12 10 C 10.621 10 9.5 11.121 9.5 12.5 C 9.5 13.879 10.621 15 12 15 C 13.379 15 14.5 13.879 14.5 12.5 C 14.5 11.121 13.379 10 12 10 z M 15.5 10 A 0.5 0.5 0 0 0 15.5 11 A 0.5 0.5 0 0 0 15.5 10 z M 12 11 C 12.827 11 13.5 11.673 13.5 12.5 C 13.5 13.327 12.827 14 12 14 C 11.173 14 10.5 13.327 10.5 12.5 C 10.5 11.673 11.173 11 12 11 z"
+                  ></path>
+                </svg>
+              </div>
+              <!-- <h3 class=" msg-info text-center">Somos Upic</h3> -->
+              <h6 class="text-center title">Inicie sesión</h6>
+              <form class="login-form" [formGroup]="loginForm">
+                <div class="form-group">
+                  <label class="form-control-label text-muted">Correo</label>
+                  <input
+                    class="form-control"
+                    type="text"
+                    placeholder="Correo"
+                    formControlName="email"
+                  />
+                </div>
+                <div class="form-group">
+                  <label class="form-control-label text-muted"
+                    >Contraseña</label
+                  >
+                  <input
+                    type="password"
+                    class="form-control"
+                    placeholder="Contraseña"
+                    formControlName="password"
+                  />
+                </div>
+              </form>
+
+              <div class="row justify-content-center my-2">
+                <a href="#"
+                  ><small class="text-muted">¿Olvido su contraseña?</small></a
+                >
+              </div>
+
+              <div class="row justify-content-center my-3 px-3">
+                <button
+                  class="btn-block btn-login"
+                  type="submit"
+                  (click)="loginEmail()"
+                >
+                  Login
+                </button>
+              </div>
+
+              <div class="row justify-content-center px-3">
+                <button id="google" (click)="loginGoogle()">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    x="0px"
+                    y="0px"
+                    width="30"
+                    height="30"
+                    viewBox="0 0 30 30"
+                    style="fill: #c47f56"
+                  >
+                    <path
+                      d="M 15.003906 3 C 8.3749062 3 3 8.373 3 15 C 3 21.627 8.3749062 27 15.003906 27 C 25.013906 27 27.269078 17.707 26.330078 13 L 25 13 L 22.732422 13 L 15 13 L 15 17 L 22.738281 17 C 21.848702 20.448251 18.725955 23 15 23 C 10.582 23 7 19.418 7 15 C 7 10.582 10.582 7 15 7 C 17.009 7 18.839141 7.74575 20.244141 8.96875 L 23.085938 6.1289062 C 20.951937 4.1849063 18.116906 3 15.003906 3 z"
+                    ></path>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="bottom text-center mb-5">
+            <p href="#" class="sm-text mx-auto mb-3 text-muted">
+              No tiene una cuenta?<button
+                class="btn btn-create ml-2"
+                (click)="create()"
+              >
+                Crear cuenta
+              </button>
+            </p>
+          </div>
+        </div>
+        <div class="card card2">
+          <div class="my-auto mx-md-5 px-md-5 right">
+            <h3 class="text-white">Somos mas que una aplicación</h3>
+            <small class="text-white"
+              >Upic tiene como objetivo crear un ambiente seguro y agradable
+              para que sus usuarios puedan compartir y descargar imagnes segun
+              sus necesidades. Forma parte de la familia Upic</small
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

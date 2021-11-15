@@ -1,0 +1,96 @@
+<div class="background">
+  <div class="form-container">
+    <div class="bf-main-background">
+      <h1 class="title">Subir recurso</h1>
+      <div class=" bf-background">
+      
+        <form [formGroup]="resourceForm" class="resourceForm">
+          <div class="form-group">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Nombre"
+              formControlName="name"
+            />
+            <span
+              class="text-danger"
+              *ngIf="
+                (registerFormControl.name.touched || submitted) &&
+                registerFormControl.name.errors?.required
+              "
+            >
+              El nombre es requerido
+            </span>
+            <input
+              type="file"
+              #img
+              class="form-control"
+              placeholder="Recurso"
+              accept="image/*"
+              (change)="selectFile($event)"
+            />
+
+            <span
+              class="text-danger"
+              *ngIf="
+                (registerFormControl.plan.touched || submitted) &&
+                registerFormControl.plan.errors?.required
+              "
+            >
+              El recurso es requerido
+            </span>
+      
+             
+              <div><img class="div-image" [src]="url" *ngIf="url" /></div>
+          
+
+            <select class="form-control" formControlName="type">
+              <option value="" disabled selected hidden>
+                Seleccionar tipo de recurso...
+              </option>
+              <option value="IMG">Imagen</option>
+              
+            </select>
+            <span
+              class="text-danger"
+              *ngIf="
+                (registerFormControl.type.touched || submitted) &&
+                registerFormControl.type.errors?.required
+              "
+            >
+              El tipo es requerido
+            </span>
+            <select class="form-control" formControlName="plan" >
+        
+              <option value="" disabled selected hidden >Seleccionar plan...</option>
+              <option value="1">Basic</option>
+              <option value="2">Silver</option>
+              <option value="3">Gold</option>
+            </select>
+            <span
+              class="text-danger"
+              *ngIf="
+                (registerFormControl.plan.touched || submitted) &&
+                registerFormControl.plan.errors?.required
+              "
+            >
+              El plan es requerido
+            </span>
+            <div class="container form-buttons">
+         
+              <button
+                type="button"
+                class="btn btn-outline-info"
+                id="button-accept"
+                (click)="submit()"
+              >
+                Aceptar
+              </button>
+            
+      </div>
+          </div>
+        </form>
+
+    </div>
+  </div>
+</div>

@@ -6,8 +6,22 @@
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <style>
+    .mat-dialog-container{
+        background-color:#283564 !important;
+        padding: 2% !important;
+    }
+   </style>
+  <script src="https://js.stripe.com/v3/"></script>
+  <script>
+    const stripe = Stripe('pk_test_51JTYunBSzuOu3eY8tj0PZAFkfi5GJrgW4D7c7wPd1XOaqdqEwe5iRg9zmY9ibCkqfzp6sWig2mLEtbn8fLEVHW54003YecPkhR'); // add the public key generated in stripe
+    const elements = stripe.elements(); // add this to be able to access stripe elements
+  </script>
 </head>
-<body>
+<body class="mat-typography">
   <app-root></app-root>
 </body>
 </html>

@@ -1,0 +1,34 @@
+<div class="main-container">
+  <div class="resources">
+    <div class="row">
+      <div *ngFor="let resource of data" class="col-sm1">
+        <div class="image-container">
+          <img alt="Error" [src]="decode(resource.recurso)" />
+        </div>
+        <div class="data-container row">
+          <div class="resource-info col1">
+            <label class="resource-label">{{ resource.nombre }}</label>
+            <label class="resource-label">{{ resource.owner.nombres }}</label>
+          </div>
+          <div class="resource-plan col1">
+            <label
+              class="plan-label"
+              [ngStyle]="{
+                color:
+                  resource.plan.nombre == 'gold' ||
+                  resource.plan.nombre == 'Gold'
+                    ? '#ffd700'
+                    : resource.plan.nombre == 'Silver' ||
+                      resource.plan.nombre == 'silver'
+                    ? '#468c98'
+                    : '#2cc5a4'
+              }"
+            >
+              {{ resource.plan.nombre }}</label
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

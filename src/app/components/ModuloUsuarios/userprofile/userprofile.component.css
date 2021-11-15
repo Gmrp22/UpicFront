@@ -1,0 +1,126 @@
+/* Var */
+* {
+  --text-multiplier: 0.7;
+}
+
+/* Basic component Styles */
+.background {
+  background-color: #f5f5f5;
+  min-height: 100%;
+  max-width: 100%;
+  overflow: auto;
+
+}
+
+.bf-main-background {
+  background-color: #fafafa;
+  border: 4px solid #def2f1;
+  border-radius: 10px;
+  margin: 20px 34px 20px 34px;
+  max-width: calc(100vw - 3%);
+  height: auto;
+}
+
+/* Form components styles */
+.data-container {
+  border-radius: 10px;
+  margin-bottom: 1.5vh;
+  border-bottom: 4px solid #def2f1;
+  border-radius: 10px;
+  padding: 5% 15% 2% 15%;
+  align-content: center;
+}
+.data-container2 {
+  padding: 1% 10% 0% 5%;
+}
+
+
+/* Actions */
+.actions-div {
+  margin-bottom: 1.5vh;
+  padding: 2% 15% 2% 15%;
+  align-content: center;
+}
+.subtitles,
+a {
+  color: black;
+  font-weight: bold;
+  font-family: "Roboto Condensed", sans-serif;
+  display: block;
+  width: fit-content;
+  margin-bottom: 2%;
+  font-size: calc(2rem * var(--text-multiplier));
+}
+.data {
+  color: black;
+  font-family: "Roboto Condensed", sans-serif;
+  display: block;
+  margin-bottom: 2%;
+  font-size: calc(2rem * var(--text-multiplier));
+}
+a:hover{
+  color: cadetblue;
+}
+
+/* Image */
+
+.image-container {
+  background-color: #def2f1;
+  border: 1px solid #8492a6;
+  width: 7vw;
+  height: 14vh;
+  margin-bottom: 1.5vh;
+  margin-left: 1.5vw;
+}
+.image-contained {
+  background-color: #def2f1;
+  border: 1px solid #8492a6;
+  width: 7vw;
+  height: 14vh;
+  margin-bottom: 1.5vh;
+}
+/* Cols */
+.col-sm {
+  font-size: 1vw;
+  margin-bottom: 4vh;
+  width: 50%;
+}
+.col1 {
+  width: 20%;
+}
+.col2 {
+  width: 50%;
+}
+.col-sm-3 {
+  width: 18%;
+}
+
+/* Title */
+.title {
+  color: #17252a;
+  font-family: "Ubuntu Condensed", sans-serif;
+  font-size: 4vh;
+  line-height: 58px;
+  width: 40vw;
+  text-align: center;
+  padding-left: 5vw;
+  font-weight: bold;
+  margin-bottom: 8vh;
+}
+/* Responsive */
+@media screen and (max-width:1524px) {
+  .col1,
+  .col2 {
+    width: 100%;
+  }
+  * {
+    --text-multiplier: 0.5;
+  }
+  
+}
+@media screen and (min-width: 1500px) and (max-height: 1500px) {
+
+  * {
+    --text-multiplier: 0.8;
+  }
+}

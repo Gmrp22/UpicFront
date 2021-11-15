@@ -1,0 +1,58 @@
+*{
+  --text: 3vw;
+  --w-text: 100%;
+  --text-multiplier: 0.7;
+}
+
+.app {
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.55),
+      rgba(0, 0, 0, 0.40)
+    ), url('../../../../assets/background.jpg') no-repeat left top;
+    height: calc(100vh - 62px);
+    background-size: cover;
+
+  }
+
+  .contain{
+    margin-left: 10%;
+    padding-top: 20%;
+  }
+
+  .lema {
+    color: #DEF2F1;
+    opacity: 0.8;
+    font-family: Ubuntu;
+    font-weight: bold;
+    font-size: var(--text);
+    line-height: 8vh;
+    width: var(--w-text);
+
+  }
+
+  .join{
+    font-size: calc(1.85rem * var(--text-multiplier));
+    color: #DEF2F1;
+    opacity: 0.7;
+    font-family: Roboto Condensed;
+    line-height: 8vh;
+    font-weight: bolder;
+    text-decoration: none;
+ 
+  }
+
+  .join:hover{
+    color: #fbad59;
+    opacity: 0.9;
+  }
+
+
+  @media screen and (max-width:480px) {
+    *{
+      --text:7vw;
+      --w-text:90%;
+      --text-multiplier: 0.5  
+    }
+
+  }
