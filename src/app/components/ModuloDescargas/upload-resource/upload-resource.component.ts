@@ -43,9 +43,13 @@ export class UploadResourceComponent implements OnInit {
     this.submitted = true;
 
     if (this.resourceForm.valid) {
-      this.uploadService
-        .uploadResource(this.resourceForm, this.image)
-        .then((val) => this.router.navigateByUrl('download/my-resource'));
+      let promise = this.uploadService.uploadResource(
+        this.resourceForm,
+        this.image
+      );
+      promise
+        .then((val) => this.router.navigateByUrl('download/my-resource'))
+        .catch((err) => setTimeout(() => window.location.reload(), 1000));
     } else {
       console.log('--');
     }

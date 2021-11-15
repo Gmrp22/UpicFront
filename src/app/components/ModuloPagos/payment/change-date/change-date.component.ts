@@ -25,7 +25,10 @@ export class ChangeDateComponent implements OnInit {
       this.user = user;
     });
   }
-
+ngOnDestroy(): void {
+  this.logedIn.unsubscribe()
+  
+}
   ngOnInit(): void {
     // Get the current subscription
     this.suscriptionService.getSubscription(this.user?.email! ? this.user?.email : '').subscribe(data => {

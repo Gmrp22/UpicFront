@@ -1,7 +1,7 @@
 <nav id="nav-color">
   <div>
     <!-- <div *ngIf="user; else notUser"> -->
-      <ul *ngIf="user; else notUser">
+      <ul *ngIf="logged; else notUser">
        
         <li><a routerLink="../../main" [routerLinkActive]="['linkActive']">Inicio</a></li>
         <li><a routerLink="/download/all-resource" [routerLinkActive]="['linkActive']"> Descubre</a></li>
@@ -13,7 +13,6 @@
             <a routerLink="/download/my-resource" [routerLinkActive]="['linkActive']">Mis recursos</a>
           </div>
         </li>
-        <li><a>Contacto</a></li>
         <li>
           <div class="dropdown">
             <button class="dot">
@@ -52,7 +51,7 @@
         <li><a routerLink="/download/all-resource" [routerLinkActive]="['linkActive']"> Descubre</a></li>
         <li><a routerLink="/user/login" [routerLinkActive]="['linkActive']">Iniciar sesion </a></li>
 
-        <li><a routerLink="">Contacto</a></li>
+   
         <li></li>
       </ul>
     </ng-template>

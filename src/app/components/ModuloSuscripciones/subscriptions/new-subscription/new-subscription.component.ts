@@ -22,7 +22,6 @@ export class NewSubscriptionComponent implements OnInit {
   constructor( public suscriptionService: SuscripcionService, private router: Router, private authService: AuthService ) {
     this.logedIn = this.authService.signedIn.subscribe((user) => {
       this.user = user;
-      console.log(user);
       
     });
    }
@@ -36,7 +35,9 @@ export class NewSubscriptionComponent implements OnInit {
     });
     this.suscriptionService.getPlans();    
   }
-
+  ngOnDestroy(): void {
+    this.logedIn.unsubscribe()
+    }
   suscribe(planID: number){
     this.planID = planID;
     this.subscription = {

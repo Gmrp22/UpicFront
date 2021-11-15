@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, SimpleChanges } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../../services/moduloUsuarios/auth.service';
 @Component({
@@ -9,10 +9,10 @@ import { AuthService } from '../../services/moduloUsuarios/auth.service';
 export class NavbarComponent {
   public user: Boolean = false;
   private logedIn: Subscription;
-
+  @Input() logged = false;
   /**
-  *Subscribes to get a flag of whether the user is logged
-  */
+   *Subscribes to get a flag of whether the user is logged
+   */
   constructor(private authService: AuthService) {
     this.logedIn = this.authService.signedIn.subscribe(
       (flag) => (this.user = flag)
@@ -24,5 +24,12 @@ export class NavbarComponent {
   logout() {
     this.logedIn.unsubscribe();
     this.authService.logout();
+  }
+  ngOnChanges(changes: SimpleChanges): void {
+    if (this.logged) {
+      this.user = true;
+    } else {
+      this.user = false;
+    }
   }
 }

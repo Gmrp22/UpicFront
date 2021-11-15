@@ -76,10 +76,14 @@ img{
   padding: 0% 1% 0% 1%;
   width: 20%;
   margin-top: 2%;
+  transition: transform 0.1s ease-in-out
 }
 .col1{
   width: 100%;
   display: inline-block;
+}
+.col-sm1:hover{
+  transform: scale(1.1);
 }
 
 /* Heart button */

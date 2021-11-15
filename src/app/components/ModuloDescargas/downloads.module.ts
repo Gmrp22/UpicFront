@@ -11,6 +11,8 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ResourceInterceptorService } from 'src/app/services/moduloDescargas/resource-interceptor.service';
 import { BiblioInterceptorService } from 'src/app/services/moduloDescargas/biblio/biblio-interceptor.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {MatDialogModule} from '@angular/material/dialog';
+import { ImageContainer } from './allresources/allresources.component';
 @NgModule({
   declarations: [
     UploadResourceComponent,
@@ -19,12 +21,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AllresourcesComponent,
     MyresourcesComponent,
     SavedresourcesComponent,
+    ImageContainer
   ],
   imports: [
     CommonModule,
     DownloadRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    MatDialogModule,
   ],
   providers: [
     {

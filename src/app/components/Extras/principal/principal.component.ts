@@ -9,7 +9,7 @@ export class PrincipalComponent implements OnInit {
   log = false;
   val:string = "";
   constructor(private auth: AuthService) {
-    this.auth.signedIn.subscribe((val) => {this.log = val; console.log(this.log); this.logIn()});
+    this.auth.signedIn.subscribe((val) => {this.log = val; this.logIn()});
 
   }
 

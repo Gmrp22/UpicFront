@@ -34,6 +34,10 @@ export class ChangeSubscriptionComponent implements OnInit {
     });
     this.suscriptionService.getPlans();
   }
+  ngOnDestroy(): void {
+    this.logedIn.unsubscribe()
+
+    }
 
   suscribe(planID: number){  
     // When selecting a plan, it is recorded in the variable planID, which will be sent to the new payment component to make the subscription
